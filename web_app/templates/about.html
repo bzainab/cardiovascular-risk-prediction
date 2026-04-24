@@ -1,0 +1,168 @@
+{% extends "base.html" %}
+
+{% block title %}About - Cardiovascular Risk Prediction{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <h1 class="mb-4">About This Project</h1>
+
+            <div class="card mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="mb-0">Project Overview</h3>
+                </div>
+                <div class="card-body">
+                    <p>
+                        This educational tool predicts 10-year cardiovascular disease risk using machine learning models 
+                        trained on the Framingham Heart Study dataset, one of the most important longitudinal studies in 
+                        cardiovascular epidemiology.
+                    </p>
+                    <p>
+                        The Framingham Heart Study began in 1948 and has followed thousands of participants over decades,
+                        collecting comprehensive data on lifestyle factors, clinical measurements, and health outcomes.
+                        This dataset has been instrumental in identifying major cardiovascular risk factors.
+                    </p>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="mb-0">Dataset Information</h3>
+                </div>
+                <div class="card-body">
+                    <h5>Size & Balance</h5>
+                    <ul>
+                        <li><strong>Total Records:</strong> 4,240 participants</li>
+                        <li><strong>Features:</strong> 16 clinical and demographic variables</li>
+                        <li><strong>Outcome:</strong> 10-year coronary heart disease (CHD) occurrence</li>
+                        <li><strong>Class Distribution:</strong> 84.8% without CHD, 15.2% with CHD</li>
+                    </ul>
+
+                    <h5 class="mt-3">Key Features</h5>
+                    <ul>
+                        <li>Demographics: Age, Gender, Education</li>
+                        <li>Lifestyle: Smoking status, cigarettes/day</li>
+                        <li>Clinical Measurements: Cholesterol, Blood Pressure, BMI, Heart Rate, Glucose</li>
+                        <li>Medical History: Stroke, Hypertension, Diabetes, Current BP medications</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="mb-0">Models Used</h3>
+                </div>
+                <div class="card-body">
+                    <p>This system uses an ensemble of 9 machine learning models for prediction:</p>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6>Traditional Methods</h6>
+                            <ul class="small">
+                                <li>Logistic Regression (Balanced)</li>
+                                <li>Logistic Regression (Accuracy-focused)</li>
+                            </ul>
+                            <h6>Tree-based Ensembles</h6>
+                            <ul class="small">
+                                <li>Random Forest (500 trees)</li>
+                                <li>Extra Trees (600 trees)</li>
+                                <li>Gradient Boosting</li>
+                                <li>Histogram Gradient Boosting</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h6>Advanced Methods</h6>
+                            <ul class="small">
+                                <li>XGBoost (400 estimators)</li>
+                                <li>Support Vector Machine (RBF kernel)</li>
+                                <li>Artificial Neural Network (3-layer)</li>
+                            </ul>
+                            <h6>Performance Metric</h6>
+                            <p class="small mb-0">
+                                Models evaluated using ROC-AUC, which measures the ability to distinguish between 
+                                CHD and non-CHD cases across different decision thresholds.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="mb-0">Primary Model Performance</h3>
+                </div>
+                <div class="card-body">
+                    <p>
+                        <strong>Primary Model:</strong> Logistic Regression (Balanced Class Weighting)
+                    </p>
+                    <table class="table table-sm">
+                        <tr>
+                            <th>Metric</th>
+                            <th>Value</th>
+                            <th>Interpretation</th>
+                        </tr>
+                        <tr>
+                            <td><strong>ROC-AUC</strong></td>
+                            <td>0.6975 (69.75%)</td>
+                            <td>Good discrimination between risk groups</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Recall (Sensitivity)</strong></td>
+                            <td>0.6047 (60.5%)</td>
+                            <td>Identifies ~60% of actual CHD cases</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Precision</strong></td>
+                            <td>0.2541 (25.4%)</td>
+                            <td>When predicting CHD, ~25% are true positives</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Accuracy (Balanced)</strong></td>
+                            <td>0.6698 (67%)</td>
+                            <td>Suitable for screening rather than diagnosis</td>
+                        </tr>
+                    </table>
+                    <p class="small mt-3">
+                        <em>Note: This model prioritizes sensitivity (recall) over specificity, making it suitable 
+                        for preliminary screening where missing risk cases is more concerning than false alarms.</em>
+                    </p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="mb-0">Methodology & Validation</h3>
+                </div>
+                <div class="card-body">
+                    <h5>Data Preprocessing</h5>
+                    <ul>
+                        <li>Missing value imputation (median strategy for 645 missing values)</li>
+                        <li>Feature normalization using StandardScaler</li>
+                        <li>Categorical encoding (one-hot for education; ordinal for others)</li>
+                        <li>Stratified train-test split (80-20)</li>
+                    </ul>
+
+                    <h5 class="mt-3">Model Development</h5>
+                    <ul>
+                        <li>5-fold stratified cross-validation for stability assessment</li>
+                        <li>Class imbalance handling via class weights (5.6:1 ratio)</li>
+                        <li>Model comparison using ROC-AUC as primary metric</li>
+                    </ul>
+
+                    <h5 class="mt-3">Evaluation</h5>
+                    <ul>
+                        <li>Test set performance: 848 unseen samples</li>
+                        <li>Confusion matrices and ROC curves generated</li>
+                        <li>All models evaluated consistently on same test set</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="alert alert-info mt-4">
+                <strong>📚 References:</strong> 
+                Framingham Heart Study - <a href="https://www.framinghamheartstudy.org" target="_blank">www.framinghamheartstudy.org</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

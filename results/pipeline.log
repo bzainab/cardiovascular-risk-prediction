@@ -1,0 +1,784 @@
+2026-03-16 17:35:59,564 - __main__ - INFO - 
+======================================================================
+2026-03-16 17:35:59,565 - __main__ - INFO - CARDIOVASCULAR RISK PREDICTION - COMPLETE PIPELINE
+2026-03-16 17:35:59,566 - __main__ - INFO - ======================================================================
+
+2026-03-16 17:35:59,566 - __main__ - INFO - PHASE 1: DATA PREPROCESSING
+2026-03-16 17:35:59,566 - __main__ - INFO - ----------------------------------------------------------------------
+2026-03-16 17:35:59,567 - data_preprocessing - INFO - Loading data from C:\Users\User\OneDrive - MMU\machine-learning-cardiovascular\Framingham Data\framingham.csv
+2026-03-16 17:35:59,598 - data_preprocessing - INFO - Data shape: (4240, 16)
+2026-03-16 17:35:59,599 - data_preprocessing - INFO - Validating data...
+2026-03-16 17:35:59,604 - data_preprocessing - WARNING - Missing values detected:
+education     105
+cigsPerDay     29
+BPMeds         53
+totChol        50
+BMI            19
+heartRate       1
+glucose       388
+dtype: int64
+2026-03-16 17:35:59,605 - data_preprocessing - INFO - Data types:
+male                 int64
+age                  int64
+education          float64
+currentSmoker        int64
+cigsPerDay         float64
+BPMeds             float64
+prevalentStroke      int64
+prevalentHyp         int64
+diabetes             int64
+totChol            float64
+sysBP              float64
+diaBP              float64
+BMI                float64
+heartRate          float64
+glucose            float64
+TenYearCHD           int64
+dtype: object
+2026-03-16 17:35:59,606 - data_preprocessing - INFO - Splitting data: train=80%, test=20%
+2026-03-16 17:35:59,606 - data_preprocessing - INFO - Encoding categorical variables...
+2026-03-16 17:35:59,619 - data_preprocessing - INFO - Binary features: ['male', 'currentSmoker', 'BPMeds', 'prevalentStroke', 'prevalentHyp', 'diabetes']
+2026-03-16 17:35:59,619 - data_preprocessing - INFO - Categorical features: ['education']
+2026-03-16 17:35:59,620 - data_preprocessing - INFO - Continuous features: ['age', 'cigsPerDay', 'totChol', 'sysBP', 'diaBP', 'BMI', 'heartRate', 'glucose']
+2026-03-16 17:35:59,632 - data_preprocessing - INFO - One-hot encoded 'education': ['edu_1.0', 'edu_2.0', 'edu_3.0', 'edu_4.0']
+2026-03-16 17:35:59,651 - data_preprocessing - INFO - Training set size: 3392 (515 positive)
+2026-03-16 17:35:59,652 - data_preprocessing - INFO - Test set size: 848 (129 positive)
+2026-03-16 17:35:59,652 - data_preprocessing - INFO - Imputing missing values with median strategy...
+2026-03-16 17:35:59,668 - data_preprocessing - INFO - Normalizing features...
+2026-03-16 17:35:59,678 - data_preprocessing - INFO - Preprocessor saved to C:\Users\User\OneDrive - MMU\machine-learning-cardiovascular\models\preprocessor.pkl
+2026-03-16 17:35:59,684 - __main__ - INFO - 
+
+PHASE 2: MODEL TRAINING
+2026-03-16 17:35:59,684 - __main__ - INFO - ----------------------------------------------------------------------
+2026-03-16 17:35:59,684 - model_training - INFO - Building all models...
+2026-03-16 17:35:59,685 - model_training - INFO - Built 9 models: ['Logistic Regression (Balanced)', 'Logistic Regression (Accuracy)', 'Random Forest', 'Extra Trees', 'Gradient Boosting', 'Hist Gradient Boosting', 'SVM (RBF)', 'XGBoost', 'ANN']
+2026-03-16 17:35:59,685 - model_training - INFO - 
+Performing 3-Fold Stratified Cross-Validation...
+2026-03-16 17:36:03,674 - model_training - INFO - Logistic Regression (Balanced): ROC-AUC = 0.7274 (+/- 0.0282)
+2026-03-16 17:36:07,118 - model_training - INFO - Logistic Regression (Accuracy): ROC-AUC = 0.7271 (+/- 0.0283)
+2026-03-16 17:36:12,688 - model_training - INFO - Random Forest: ROC-AUC = 0.7186 (+/- 0.0214)
+2026-03-16 17:36:14,360 - model_training - INFO - Extra Trees: ROC-AUC = 0.7063 (+/- 0.0242)
+2026-03-16 17:36:15,835 - model_training - INFO - Gradient Boosting: ROC-AUC = 0.7041 (+/- 0.0199)
+2026-03-16 17:36:16,437 - model_training - INFO - Hist Gradient Boosting: ROC-AUC = 0.6905 (+/- 0.0179)
+2026-03-16 17:36:18,203 - model_training - INFO - SVM (RBF): ROC-AUC = 0.6735 (+/- 0.0228)
+2026-03-16 17:36:18,650 - model_training - INFO - XGBoost: ROC-AUC = 0.6943 (+/- 0.0164)
+2026-03-16 17:36:18,650 - model_training - INFO - ANN: Skipped in CV (evaluated on test set)
+2026-03-16 17:36:18,651 - model_training - INFO - 
+============================================================
+2026-03-16 17:36:18,651 - model_training - INFO - TRAINING ALL MODELS
+2026-03-16 17:36:18,651 - model_training - INFO - ============================================================
+2026-03-16 17:36:18,652 - model_training - INFO - Training Logistic Regression (Balanced)...
+2026-03-16 17:36:18,673 - model_training - INFO - Training Logistic Regression (Accuracy)...
+2026-03-16 17:36:18,687 - model_training - INFO - Training Random Forest...
+2026-03-16 17:36:20,358 - model_training - INFO - Training Extra Trees...
+2026-03-16 17:36:21,317 - model_training - INFO - Training Gradient Boosting...
+2026-03-16 17:36:22,903 - model_training - INFO - Training Hist Gradient Boosting...
+2026-03-16 17:36:25,442 - model_training - INFO - Training SVM (RBF)...
+2026-03-16 17:36:28,217 - model_training - INFO - Training XGBoost...
+2026-03-16 17:36:28,606 - model_training - INFO - Training ANN...
+2026-03-16 17:36:29,552 - model_training - INFO - 
+Saving models to C:\Users\User\OneDrive - MMU\machine-learning-cardiovascular\models...
+2026-03-16 17:36:30,049 - __main__ - INFO - 
+
+PHASE 3: MODEL EVALUATION
+2026-03-16 17:36:30,049 - __main__ - INFO - ----------------------------------------------------------------------
+2026-03-16 17:36:30,050 - model_evaluation - INFO - 
+============================================================
+2026-03-16 17:36:30,050 - model_evaluation - INFO - MODEL EVALUATION
+2026-03-16 17:36:30,050 - model_evaluation - INFO - ============================================================
+2026-03-16 17:36:30,050 - model_evaluation - INFO - 
+Evaluating Logistic Regression (Balanced)...
+2026-03-16 17:36:30,073 - model_evaluation - INFO - Logistic Regression (Balanced) Results:
+2026-03-16 17:36:30,073 - model_evaluation - INFO -   Accuracy: 0.6698
+2026-03-16 17:36:30,074 - model_evaluation - INFO -   Precision: 0.2541
+2026-03-16 17:36:30,074 - model_evaluation - INFO -   Recall: 0.6047
+2026-03-16 17:36:30,074 - model_evaluation - INFO -   F1-Score: 0.3578
+2026-03-16 17:36:30,074 - model_evaluation - INFO -   ROC-AUC: 0.6975
+2026-03-16 17:36:30,075 - model_evaluation - INFO - 
+Evaluating Logistic Regression (Accuracy)...
+2026-03-16 17:36:30,096 - model_evaluation - INFO - Logistic Regression (Accuracy) Results:
+2026-03-16 17:36:30,097 - model_evaluation - INFO -   Accuracy: 0.8420
+2026-03-16 17:36:30,097 - model_evaluation - INFO -   Precision: 0.3529
+2026-03-16 17:36:30,097 - model_evaluation - INFO -   Recall: 0.0465
+2026-03-16 17:36:30,098 - model_evaluation - INFO -   F1-Score: 0.0822
+2026-03-16 17:36:30,098 - model_evaluation - INFO -   ROC-AUC: 0.6990
+2026-03-16 17:36:30,098 - model_evaluation - INFO - 
+Evaluating Random Forest...
+2026-03-16 17:36:30,354 - model_evaluation - INFO - Random Forest Results:
+2026-03-16 17:36:30,354 - model_evaluation - INFO -   Accuracy: 0.8314
+2026-03-16 17:36:30,355 - model_evaluation - INFO -   Precision: 0.3600
+2026-03-16 17:36:30,355 - model_evaluation - INFO -   Recall: 0.1395
+2026-03-16 17:36:30,355 - model_evaluation - INFO -   F1-Score: 0.2011
+2026-03-16 17:36:30,355 - model_evaluation - INFO -   ROC-AUC: 0.6564
+2026-03-16 17:36:30,356 - model_evaluation - INFO - 
+Evaluating Extra Trees...
+2026-03-16 17:36:30,650 - model_evaluation - INFO - Extra Trees Results:
+2026-03-16 17:36:30,650 - model_evaluation - INFO -   Accuracy: 0.7618
+2026-03-16 17:36:30,650 - model_evaluation - INFO -   Precision: 0.2614
+2026-03-16 17:36:30,650 - model_evaluation - INFO -   Recall: 0.3101
+2026-03-16 17:36:30,651 - model_evaluation - INFO -   F1-Score: 0.2837
+2026-03-16 17:36:30,651 - model_evaluation - INFO -   ROC-AUC: 0.6696
+2026-03-16 17:36:30,651 - model_evaluation - INFO - 
+Evaluating Gradient Boosting...
+2026-03-16 17:36:30,671 - model_evaluation - INFO - Gradient Boosting Results:
+2026-03-16 17:36:30,671 - model_evaluation - INFO -   Accuracy: 0.8384
+2026-03-16 17:36:30,672 - model_evaluation - INFO -   Precision: 0.3750
+2026-03-16 17:36:30,672 - model_evaluation - INFO -   Recall: 0.0930
+2026-03-16 17:36:30,672 - model_evaluation - INFO -   F1-Score: 0.1491
+2026-03-16 17:36:30,672 - model_evaluation - INFO -   ROC-AUC: 0.6553
+2026-03-16 17:36:30,673 - model_evaluation - INFO - 
+Evaluating Hist Gradient Boosting...
+2026-03-16 17:36:30,722 - model_evaluation - INFO - Hist Gradient Boosting Results:
+2026-03-16 17:36:30,722 - model_evaluation - INFO -   Accuracy: 0.8314
+2026-03-16 17:36:30,723 - model_evaluation - INFO -   Precision: 0.3158
+2026-03-16 17:36:30,723 - model_evaluation - INFO -   Recall: 0.0930
+2026-03-16 17:36:30,723 - model_evaluation - INFO -   F1-Score: 0.1437
+2026-03-16 17:36:30,724 - model_evaluation - INFO -   ROC-AUC: 0.6278
+2026-03-16 17:36:30,724 - model_evaluation - INFO - 
+Evaluating SVM (RBF)...
+2026-03-16 17:36:31,393 - model_evaluation - INFO - SVM (RBF) Results:
+2026-03-16 17:36:31,393 - model_evaluation - INFO -   Accuracy: 0.6910
+2026-03-16 17:36:31,393 - model_evaluation - INFO -   Precision: 0.2308
+2026-03-16 17:36:31,394 - model_evaluation - INFO -   Recall: 0.4419
+2026-03-16 17:36:31,394 - model_evaluation - INFO -   F1-Score: 0.3032
+2026-03-16 17:36:31,394 - model_evaluation - INFO -   ROC-AUC: 0.6396
+2026-03-16 17:36:31,395 - model_evaluation - INFO - 
+Evaluating XGBoost...
+2026-03-16 17:36:31,428 - model_evaluation - INFO - XGBoost Results:
+2026-03-16 17:36:31,429 - model_evaluation - INFO -   Accuracy: 0.6969
+2026-03-16 17:36:31,429 - model_evaluation - INFO -   Precision: 0.2288
+2026-03-16 17:36:31,430 - model_evaluation - INFO -   Recall: 0.4186
+2026-03-16 17:36:31,430 - model_evaluation - INFO -   F1-Score: 0.2959
+2026-03-16 17:36:31,430 - model_evaluation - INFO -   ROC-AUC: 0.6408
+2026-03-16 17:36:31,431 - model_evaluation - INFO - 
+Evaluating ANN...
+2026-03-16 17:36:31,458 - model_evaluation - INFO - ANN Results:
+2026-03-16 17:36:31,458 - model_evaluation - INFO -   Accuracy: 0.8467
+2026-03-16 17:36:31,458 - model_evaluation - INFO -   Precision: 0.4667
+2026-03-16 17:36:31,459 - model_evaluation - INFO -   Recall: 0.0543
+2026-03-16 17:36:31,459 - model_evaluation - INFO -   F1-Score: 0.0972
+2026-03-16 17:36:31,459 - model_evaluation - INFO -   ROC-AUC: 0.6928
+2026-03-16 17:36:31,459 - model_evaluation - INFO - 
+============================================================
+2026-03-16 17:36:31,460 - model_evaluation - INFO - MODEL COMPARISON SUMMARY
+2026-03-16 17:36:31,460 - model_evaluation - INFO - ============================================================
+2026-03-16 17:36:31,465 - model_evaluation - INFO - 
+Performance Ranking (by ROC-AUC):
+2026-03-16 17:36:31,472 - model_evaluation - INFO -                                 Accuracy  Precision    Recall  F1-Score   ROC-AUC
+Logistic Regression (Accuracy)  0.841981   0.352941  0.046512  0.082192  0.699001
+Logistic Regression (Balanced)  0.669811   0.254072  0.604651  0.357798  0.697470
+ANN                             0.846698   0.466667  0.054264  0.097222  0.692834
+Extra Trees                     0.761792   0.261438  0.310078  0.283688  0.669599
+Random Forest                   0.831368   0.360000  0.139535  0.201117  0.656381
+Gradient Boosting               0.838443   0.375000  0.093023  0.149068  0.655324
+XGBoost                         0.696934   0.228814  0.418605  0.295890  0.640791
+SVM (RBF)                       0.691038   0.230769  0.441860  0.303191  0.639583
+Hist Gradient Boosting          0.831368   0.315789  0.093023  0.143713  0.627799
+2026-03-16 17:36:31,473 - model_evaluation - INFO - 
+Performance Ranking (by Accuracy):
+2026-03-16 17:36:31,477 - model_evaluation - INFO -                                 Accuracy  Precision    Recall  F1-Score   ROC-AUC
+ANN                             0.846698   0.466667  0.054264  0.097222  0.692834
+Logistic Regression (Accuracy)  0.841981   0.352941  0.046512  0.082192  0.699001
+Gradient Boosting               0.838443   0.375000  0.093023  0.149068  0.655324
+Hist Gradient Boosting          0.831368   0.315789  0.093023  0.143713  0.627799
+Random Forest                   0.831368   0.360000  0.139535  0.201117  0.656381
+Extra Trees                     0.761792   0.261438  0.310078  0.283688  0.669599
+XGBoost                         0.696934   0.228814  0.418605  0.295890  0.640791
+SVM (RBF)                       0.691038   0.230769  0.441860  0.303191  0.639583
+Logistic Regression (Balanced)  0.669811   0.254072  0.604651  0.357798  0.697470
+2026-03-16 17:36:31,488 - model_evaluation - INFO - 
+Plotting ROC curves...
+2026-03-16 17:36:32,237 - model_evaluation - INFO - 
+Plotting confusion matrices...
+2026-03-16 17:36:34,908 - model_evaluation - INFO - 
+============================================================
+2026-03-16 17:36:34,909 - model_evaluation - INFO - DETAILED REPORT - Logistic Regression (Accuracy)
+2026-03-16 17:36:34,909 - model_evaluation - INFO - ============================================================
+2026-03-16 17:36:34,916 - model_evaluation - INFO - 
+              precision    recall  f1-score   support
+
+      No CHD       0.85      0.98      0.91       719
+         CHD       0.35      0.05      0.08       129
+
+    accuracy                           0.84       848
+   macro avg       0.60      0.52      0.50       848
+weighted avg       0.78      0.84      0.79       848
+
+2026-03-16 17:36:34,916 - __main__ - INFO - 
+======================================================================
+2026-03-16 17:36:34,917 - __main__ - INFO - PIPELINE COMPLETED SUCCESSFULLY
+2026-03-16 17:36:34,917 - __main__ - INFO - ======================================================================
+2026-03-16 17:36:34,925 - __main__ - INFO - 
+Now ready for Web App integration!
+
+2026-03-16 17:38:29,993 - __main__ - INFO - 
+======================================================================
+2026-03-16 17:38:29,993 - __main__ - INFO - CARDIOVASCULAR RISK PREDICTION - COMPLETE PIPELINE
+2026-03-16 17:38:29,994 - __main__ - INFO - ======================================================================
+
+2026-03-16 17:38:29,995 - __main__ - INFO - PHASE 1: DATA PREPROCESSING
+2026-03-16 17:38:29,995 - __main__ - INFO - ----------------------------------------------------------------------
+2026-03-16 17:38:29,996 - data_preprocessing - INFO - Loading data from C:\Users\User\OneDrive - MMU\machine-learning-cardiovascular\Framingham Data\framingham.csv
+2026-03-16 17:38:30,024 - data_preprocessing - INFO - Data shape: (4240, 16)
+2026-03-16 17:38:30,024 - data_preprocessing - INFO - Validating data...
+2026-03-16 17:38:30,026 - data_preprocessing - WARNING - Missing values detected:
+education     105
+cigsPerDay     29
+BPMeds         53
+totChol        50
+BMI            19
+heartRate       1
+glucose       388
+dtype: int64
+2026-03-16 17:38:30,028 - data_preprocessing - INFO - Data types:
+male                 int64
+age                  int64
+education          float64
+currentSmoker        int64
+cigsPerDay         float64
+BPMeds             float64
+prevalentStroke      int64
+prevalentHyp         int64
+diabetes             int64
+totChol            float64
+sysBP              float64
+diaBP              float64
+BMI                float64
+heartRate          float64
+glucose            float64
+TenYearCHD           int64
+dtype: object
+2026-03-16 17:38:30,028 - data_preprocessing - INFO - Splitting data: train=80%, test=20%
+2026-03-16 17:38:30,029 - data_preprocessing - INFO - Encoding categorical variables...
+2026-03-16 17:38:30,032 - data_preprocessing - INFO - Binary features: ['male', 'currentSmoker', 'BPMeds', 'prevalentStroke', 'prevalentHyp', 'diabetes']
+2026-03-16 17:38:30,032 - data_preprocessing - INFO - Categorical features: ['education']
+2026-03-16 17:38:30,033 - data_preprocessing - INFO - Continuous features: ['age', 'cigsPerDay', 'totChol', 'sysBP', 'diaBP', 'BMI', 'heartRate', 'glucose']
+2026-03-16 17:38:30,035 - data_preprocessing - INFO - One-hot encoded 'education': ['edu_1.0', 'edu_2.0', 'edu_3.0', 'edu_4.0']
+2026-03-16 17:38:30,041 - data_preprocessing - INFO - Training set size: 3392 (515 positive)
+2026-03-16 17:38:30,041 - data_preprocessing - INFO - Test set size: 848 (129 positive)
+2026-03-16 17:38:30,041 - data_preprocessing - INFO - Imputing missing values with median strategy...
+2026-03-16 17:38:30,054 - data_preprocessing - INFO - Normalizing features...
+2026-03-16 17:38:30,061 - data_preprocessing - INFO - Preprocessor saved to C:\Users\User\OneDrive - MMU\machine-learning-cardiovascular\models\preprocessor.pkl
+2026-03-16 17:38:30,065 - __main__ - INFO - 
+
+PHASE 2: MODEL TRAINING
+2026-03-16 17:38:30,065 - __main__ - INFO - ----------------------------------------------------------------------
+2026-03-16 17:38:30,065 - model_training - INFO - Building all models...
+2026-03-16 17:38:30,066 - model_training - INFO - Built 9 models: ['Logistic Regression (Balanced)', 'Logistic Regression (Accuracy)', 'Random Forest', 'Extra Trees', 'Gradient Boosting', 'Hist Gradient Boosting', 'SVM (RBF)', 'XGBoost', 'ANN']
+2026-03-16 17:38:30,066 - model_training - INFO - 
+Performing 3-Fold Stratified Cross-Validation...
+2026-03-16 17:38:34,061 - model_training - INFO - Logistic Regression (Balanced): ROC-AUC = 0.7274 (+/- 0.0282)
+2026-03-16 17:38:37,069 - model_training - INFO - Logistic Regression (Accuracy): ROC-AUC = 0.7271 (+/- 0.0283)
+2026-03-16 17:38:42,238 - model_training - INFO - Random Forest: ROC-AUC = 0.7186 (+/- 0.0214)
+2026-03-16 17:44:32,579 - __main__ - INFO - 
+======================================================================
+2026-03-16 17:44:32,580 - __main__ - INFO - CARDIOVASCULAR RISK PREDICTION - COMPLETE PIPELINE
+2026-03-16 17:44:32,580 - __main__ - INFO - ======================================================================
+
+2026-03-16 17:44:32,581 - __main__ - INFO - PHASE 1: DATA PREPROCESSING
+2026-03-16 17:44:32,581 - __main__ - INFO - ----------------------------------------------------------------------
+2026-03-16 17:44:32,581 - data_preprocessing - INFO - Loading data from C:\Users\User\OneDrive - MMU\machine-learning-cardiovascular\Framingham Data\framingham.csv
+2026-03-16 17:44:32,593 - data_preprocessing - INFO - Data shape: (4240, 16)
+2026-03-16 17:44:32,593 - data_preprocessing - INFO - Validating data...
+2026-03-16 17:44:32,596 - data_preprocessing - WARNING - Missing values detected:
+education     105
+cigsPerDay     29
+BPMeds         53
+totChol        50
+BMI            19
+heartRate       1
+glucose       388
+dtype: int64
+2026-03-16 17:44:32,597 - data_preprocessing - INFO - Data types:
+male                 int64
+age                  int64
+education          float64
+currentSmoker        int64
+cigsPerDay         float64
+BPMeds             float64
+prevalentStroke      int64
+prevalentHyp         int64
+diabetes             int64
+totChol            float64
+sysBP              float64
+diaBP              float64
+BMI                float64
+heartRate          float64
+glucose            float64
+TenYearCHD           int64
+dtype: object
+2026-03-16 17:44:32,598 - data_preprocessing - INFO - Splitting data: train=80%, test=20%
+2026-03-16 17:44:32,598 - data_preprocessing - INFO - Encoding categorical variables...
+2026-03-16 17:44:32,601 - data_preprocessing - INFO - Binary features: ['male', 'currentSmoker', 'BPMeds', 'prevalentStroke', 'prevalentHyp', 'diabetes']
+2026-03-16 17:44:32,602 - data_preprocessing - INFO - Categorical features: ['education']
+2026-03-16 17:44:32,602 - data_preprocessing - INFO - Continuous features: ['age', 'cigsPerDay', 'totChol', 'sysBP', 'diaBP', 'BMI', 'heartRate', 'glucose']
+2026-03-16 17:44:32,605 - data_preprocessing - INFO - One-hot encoded 'education': ['edu_1.0', 'edu_2.0', 'edu_3.0', 'edu_4.0']
+2026-03-16 17:44:32,611 - data_preprocessing - INFO - Training set size: 3392 (515 positive)
+2026-03-16 17:44:32,611 - data_preprocessing - INFO - Test set size: 848 (129 positive)
+2026-03-16 17:44:32,612 - data_preprocessing - INFO - Imputing missing values with median strategy...
+2026-03-16 17:44:32,626 - data_preprocessing - INFO - Normalizing features...
+2026-03-16 17:44:32,635 - data_preprocessing - INFO - Preprocessor saved to C:\Users\User\OneDrive - MMU\machine-learning-cardiovascular\models\preprocessor.pkl
+2026-03-16 17:44:32,639 - __main__ - INFO - 
+
+PHASE 2: MODEL TRAINING
+2026-03-16 17:44:32,639 - __main__ - INFO - ----------------------------------------------------------------------
+2026-03-16 17:44:32,640 - model_training - INFO - Building all models...
+2026-03-16 17:44:32,640 - model_training - INFO - Built 9 models: ['Logistic Regression (Balanced)', 'Logistic Regression (Accuracy)', 'Random Forest', 'Extra Trees', 'Gradient Boosting', 'Hist Gradient Boosting', 'SVM (RBF)', 'XGBoost', 'ANN']
+2026-03-16 17:44:32,641 - model_training - INFO - 
+Performing 3-Fold Stratified Cross-Validation...
+2026-03-16 17:44:37,854 - model_training - INFO - Logistic Regression (Balanced): ROC-AUC = 0.7274 (+/- 0.0282)
+2026-03-16 17:44:40,622 - model_training - INFO - Logistic Regression (Accuracy): ROC-AUC = 0.7271 (+/- 0.0283)
+2026-03-16 17:44:45,588 - model_training - INFO - Random Forest: ROC-AUC = 0.7186 (+/- 0.0214)
+2026-03-16 17:44:47,318 - model_training - INFO - Extra Trees: ROC-AUC = 0.7063 (+/- 0.0242)
+2026-03-16 17:44:48,754 - model_training - INFO - Gradient Boosting: ROC-AUC = 0.7041 (+/- 0.0199)
+2026-03-16 17:44:49,554 - model_training - INFO - Hist Gradient Boosting: ROC-AUC = 0.6905 (+/- 0.0179)
+2026-03-16 17:44:52,212 - model_training - INFO - SVM (RBF): ROC-AUC = 0.6735 (+/- 0.0228)
+2026-03-16 17:44:52,670 - model_training - INFO - XGBoost: ROC-AUC = 0.6943 (+/- 0.0164)
+2026-03-16 17:44:52,671 - model_training - INFO - ANN: Skipped in CV (evaluated on test set)
+2026-03-16 17:44:52,671 - model_training - INFO - 
+============================================================
+2026-03-16 17:44:52,671 - model_training - INFO - TRAINING ALL MODELS
+2026-03-16 17:44:52,671 - model_training - INFO - ============================================================
+2026-03-16 17:44:52,672 - model_training - INFO - Training Logistic Regression (Balanced)...
+2026-03-16 17:44:52,687 - model_training - INFO - [OK] Logistic Regression (Balanced) trained
+2026-03-16 17:44:52,687 - model_training - INFO - Training Logistic Regression (Accuracy)...
+2026-03-16 17:44:52,699 - model_training - INFO - [OK] Logistic Regression (Accuracy) trained
+2026-03-16 17:44:52,699 - model_training - INFO - Training Random Forest...
+2026-03-16 17:44:54,654 - model_training - INFO - [OK] Random Forest trained
+2026-03-16 17:44:54,710 - model_training - INFO - Training Extra Trees...
+2026-03-16 17:44:56,381 - model_training - INFO - [OK] Extra Trees trained
+2026-03-16 17:44:56,382 - model_training - INFO - Training Gradient Boosting...
+2026-03-16 17:44:58,146 - model_training - INFO - [OK] Gradient Boosting trained
+2026-03-16 17:44:58,146 - model_training - INFO - Training Hist Gradient Boosting...
+2026-03-16 17:45:03,641 - model_training - INFO - [OK] Hist Gradient Boosting trained
+2026-03-16 17:45:03,641 - model_training - INFO - Training SVM (RBF)...
+2026-03-16 17:45:08,210 - model_training - INFO - [OK] SVM (RBF) trained
+2026-03-16 17:45:08,211 - model_training - INFO - Training XGBoost...
+2026-03-16 17:45:08,986 - model_training - INFO - [OK] XGBoost trained
+2026-03-16 17:45:08,986 - model_training - INFO - Training ANN...
+2026-03-16 17:45:10,474 - model_training - INFO - [OK] ANN trained
+2026-03-16 17:45:10,474 - model_training - INFO - 
+[OK] All 9 models trained successfully
+
+2026-03-16 17:45:10,475 - model_training - INFO - 
+Saving models to C:\Users\User\OneDrive - MMU\machine-learning-cardiovascular\models...
+2026-03-16 17:45:10,478 - model_training - INFO - [OK] Logistic Regression (Balanced) saved to C:\Users\User\OneDrive - MMU\machine-learning-cardiovascular\models\Logistic_Regression_Balanced.pkl
+2026-03-16 17:45:10,481 - model_training - INFO - [OK] Logistic Regression (Accuracy) saved to C:\Users\User\OneDrive - MMU\machine-learning-cardiovascular\models\Logistic_Regression_Accuracy.pkl
+2026-03-16 17:45:10,692 - model_training - INFO - [OK] Random Forest saved to C:\Users\User\OneDrive - MMU\machine-learning-cardiovascular\models\Random_Forest.pkl
+2026-03-16 17:45:10,943 - model_training - INFO - [OK] Extra Trees saved to C:\Users\User\OneDrive - MMU\machine-learning-cardiovascular\models\Extra_Trees.pkl
+2026-03-16 17:45:10,954 - model_training - INFO - [OK] Gradient Boosting saved to C:\Users\User\OneDrive - MMU\machine-learning-cardiovascular\models\Gradient_Boosting.pkl
+2026-03-16 17:45:11,006 - model_training - INFO - [OK] Hist Gradient Boosting saved to C:\Users\User\OneDrive - MMU\machine-learning-cardiovascular\models\Hist_Gradient_Boosting.pkl
+2026-03-16 17:45:11,010 - model_training - INFO - [OK] SVM (RBF) saved to C:\Users\User\OneDrive - MMU\machine-learning-cardiovascular\models\SVM_RBF.pkl
+2026-03-16 17:45:11,023 - model_training - INFO - [OK] XGBoost saved to C:\Users\User\OneDrive - MMU\machine-learning-cardiovascular\models\XGBoost.pkl
+2026-03-16 17:45:11,032 - model_training - INFO - [OK] ANN saved to C:\Users\User\OneDrive - MMU\machine-learning-cardiovascular\models\ANN.pkl
+2026-03-16 17:45:11,032 - __main__ - INFO - 
+
+PHASE 3: MODEL EVALUATION
+2026-03-16 17:45:11,032 - __main__ - INFO - ----------------------------------------------------------------------
+2026-03-16 17:45:11,033 - model_evaluation - INFO - 
+============================================================
+2026-03-16 17:45:11,033 - model_evaluation - INFO - MODEL EVALUATION
+2026-03-16 17:45:11,034 - model_evaluation - INFO - ============================================================
+2026-03-16 17:45:11,034 - model_evaluation - INFO - 
+Evaluating Logistic Regression (Balanced)...
+2026-03-16 17:45:11,061 - model_evaluation - INFO - Logistic Regression (Balanced) Results:
+2026-03-16 17:45:11,061 - model_evaluation - INFO -   Accuracy: 0.6698
+2026-03-16 17:45:11,061 - model_evaluation - INFO -   Precision: 0.2541
+2026-03-16 17:45:11,061 - model_evaluation - INFO -   Recall: 0.6047
+2026-03-16 17:45:11,062 - model_evaluation - INFO -   F1-Score: 0.3578
+2026-03-16 17:45:11,062 - model_evaluation - INFO -   ROC-AUC: 0.6975
+2026-03-16 17:45:11,062 - model_evaluation - INFO - 
+Evaluating Logistic Regression (Accuracy)...
+2026-03-16 17:45:11,088 - model_evaluation - INFO - Logistic Regression (Accuracy) Results:
+2026-03-16 17:45:11,088 - model_evaluation - INFO -   Accuracy: 0.8420
+2026-03-16 17:45:11,089 - model_evaluation - INFO -   Precision: 0.3529
+2026-03-16 17:45:11,089 - model_evaluation - INFO -   Recall: 0.0465
+2026-03-16 17:45:11,089 - model_evaluation - INFO -   F1-Score: 0.0822
+2026-03-16 17:45:11,090 - model_evaluation - INFO -   ROC-AUC: 0.6990
+2026-03-16 17:45:11,090 - model_evaluation - INFO - 
+Evaluating Random Forest...
+2026-03-16 17:45:11,392 - model_evaluation - INFO - Random Forest Results:
+2026-03-16 17:45:11,392 - model_evaluation - INFO -   Accuracy: 0.8314
+2026-03-16 17:45:11,393 - model_evaluation - INFO -   Precision: 0.3600
+2026-03-16 17:45:11,393 - model_evaluation - INFO -   Recall: 0.1395
+2026-03-16 17:45:11,393 - model_evaluation - INFO -   F1-Score: 0.2011
+2026-03-16 17:45:11,393 - model_evaluation - INFO -   ROC-AUC: 0.6564
+2026-03-16 17:45:11,394 - model_evaluation - INFO - 
+Evaluating Extra Trees...
+2026-03-16 17:45:11,707 - model_evaluation - INFO - Extra Trees Results:
+2026-03-16 17:45:11,707 - model_evaluation - INFO -   Accuracy: 0.7618
+2026-03-16 17:45:11,707 - model_evaluation - INFO -   Precision: 0.2614
+2026-03-16 17:45:11,708 - model_evaluation - INFO -   Recall: 0.3101
+2026-03-16 17:45:11,708 - model_evaluation - INFO -   F1-Score: 0.2837
+2026-03-16 17:45:11,708 - model_evaluation - INFO -   ROC-AUC: 0.6696
+2026-03-16 17:45:11,709 - model_evaluation - INFO - 
+Evaluating Gradient Boosting...
+2026-03-16 17:45:11,734 - model_evaluation - INFO - Gradient Boosting Results:
+2026-03-16 17:45:11,735 - model_evaluation - INFO -   Accuracy: 0.8384
+2026-03-16 17:45:11,735 - model_evaluation - INFO -   Precision: 0.3750
+2026-03-16 17:45:11,735 - model_evaluation - INFO -   Recall: 0.0930
+2026-03-16 17:45:11,735 - model_evaluation - INFO -   F1-Score: 0.1491
+2026-03-16 17:45:11,736 - model_evaluation - INFO -   ROC-AUC: 0.6553
+2026-03-16 17:45:11,736 - model_evaluation - INFO - 
+Evaluating Hist Gradient Boosting...
+2026-03-16 17:45:11,794 - model_evaluation - INFO - Hist Gradient Boosting Results:
+2026-03-16 17:45:11,794 - model_evaluation - INFO -   Accuracy: 0.8314
+2026-03-16 17:45:11,795 - model_evaluation - INFO -   Precision: 0.3158
+2026-03-16 17:45:11,795 - model_evaluation - INFO -   Recall: 0.0930
+2026-03-16 17:45:11,795 - model_evaluation - INFO -   F1-Score: 0.1437
+2026-03-16 17:45:11,795 - model_evaluation - INFO -   ROC-AUC: 0.6278
+2026-03-16 17:45:11,796 - model_evaluation - INFO - 
+Evaluating SVM (RBF)...
+2026-03-16 17:45:12,617 - model_evaluation - INFO - SVM (RBF) Results:
+2026-03-16 17:45:12,617 - model_evaluation - INFO -   Accuracy: 0.6910
+2026-03-16 17:45:12,618 - model_evaluation - INFO -   Precision: 0.2308
+2026-03-16 17:45:12,618 - model_evaluation - INFO -   Recall: 0.4419
+2026-03-16 17:45:12,618 - model_evaluation - INFO -   F1-Score: 0.3032
+2026-03-16 17:45:12,618 - model_evaluation - INFO -   ROC-AUC: 0.6396
+2026-03-16 17:45:12,618 - model_evaluation - INFO - 
+Evaluating XGBoost...
+2026-03-16 17:45:12,656 - model_evaluation - INFO - XGBoost Results:
+2026-03-16 17:45:12,657 - model_evaluation - INFO -   Accuracy: 0.6969
+2026-03-16 17:45:12,657 - model_evaluation - INFO -   Precision: 0.2288
+2026-03-16 17:45:12,657 - model_evaluation - INFO -   Recall: 0.4186
+2026-03-16 17:45:12,658 - model_evaluation - INFO -   F1-Score: 0.2959
+2026-03-16 17:45:12,659 - model_evaluation - INFO -   ROC-AUC: 0.6408
+2026-03-16 17:45:12,659 - model_evaluation - INFO - 
+Evaluating ANN...
+2026-03-16 17:45:12,687 - model_evaluation - INFO - ANN Results:
+2026-03-16 17:45:12,688 - model_evaluation - INFO -   Accuracy: 0.8467
+2026-03-16 17:45:12,688 - model_evaluation - INFO -   Precision: 0.4667
+2026-03-16 17:45:12,688 - model_evaluation - INFO -   Recall: 0.0543
+2026-03-16 17:45:12,688 - model_evaluation - INFO -   F1-Score: 0.0972
+2026-03-16 17:45:12,689 - model_evaluation - INFO -   ROC-AUC: 0.6928
+2026-03-16 17:45:12,689 - model_evaluation - INFO - 
+============================================================
+2026-03-16 17:45:12,689 - model_evaluation - INFO - MODEL COMPARISON SUMMARY
+2026-03-16 17:45:12,689 - model_evaluation - INFO - ============================================================
+2026-03-16 17:45:12,695 - model_evaluation - INFO - 
+Performance Ranking (by ROC-AUC):
+2026-03-16 17:45:12,718 - model_evaluation - INFO -                                 Accuracy  Precision    Recall  F1-Score   ROC-AUC
+Logistic Regression (Accuracy)  0.841981   0.352941  0.046512  0.082192  0.699001
+Logistic Regression (Balanced)  0.669811   0.254072  0.604651  0.357798  0.697470
+ANN                             0.846698   0.466667  0.054264  0.097222  0.692834
+Extra Trees                     0.761792   0.261438  0.310078  0.283688  0.669599
+Random Forest                   0.831368   0.360000  0.139535  0.201117  0.656381
+Gradient Boosting               0.838443   0.375000  0.093023  0.149068  0.655324
+XGBoost                         0.696934   0.228814  0.418605  0.295890  0.640791
+SVM (RBF)                       0.691038   0.230769  0.441860  0.303191  0.639583
+Hist Gradient Boosting          0.831368   0.315789  0.093023  0.143713  0.627799
+2026-03-16 17:45:12,718 - model_evaluation - INFO - 
+Performance Ranking (by Accuracy):
+2026-03-16 17:45:12,722 - model_evaluation - INFO -                                 Accuracy  Precision    Recall  F1-Score   ROC-AUC
+ANN                             0.846698   0.466667  0.054264  0.097222  0.692834
+Logistic Regression (Accuracy)  0.841981   0.352941  0.046512  0.082192  0.699001
+Gradient Boosting               0.838443   0.375000  0.093023  0.149068  0.655324
+Hist Gradient Boosting          0.831368   0.315789  0.093023  0.143713  0.627799
+Random Forest                   0.831368   0.360000  0.139535  0.201117  0.656381
+Extra Trees                     0.761792   0.261438  0.310078  0.283688  0.669599
+XGBoost                         0.696934   0.228814  0.418605  0.295890  0.640791
+SVM (RBF)                       0.691038   0.230769  0.441860  0.303191  0.639583
+Logistic Regression (Balanced)  0.669811   0.254072  0.604651  0.357798  0.697470
+2026-03-16 17:45:12,723 - model_evaluation - INFO - 
+[OK] Best ROC-AUC model: Logistic Regression (Accuracy) (ROC-AUC: 0.6990)
+2026-03-16 17:45:12,725 - model_evaluation - INFO - [OK] Best Accuracy model: ANN (Accuracy: 0.8467)
+2026-03-16 17:45:12,725 - model_evaluation - INFO - 
+Plotting ROC curves...
+2026-03-16 17:45:13,777 - model_evaluation - INFO - [OK] ROC curves saved to C:\Users\User\OneDrive - MMU\machine-learning-cardiovascular\results\roc_curves.png
+2026-03-16 17:45:13,789 - model_evaluation - INFO - 
+Plotting confusion matrices...
+2026-03-16 17:45:17,864 - model_evaluation - INFO - [OK] Confusion matrices saved to C:\Users\User\OneDrive - MMU\machine-learning-cardiovascular\results\confusion_matrices.png
+2026-03-16 17:45:17,918 - model_evaluation - INFO - [OK] Results saved to C:\Users\User\OneDrive - MMU\machine-learning-cardiovascular\results\model_results.csv
+2026-03-16 17:45:17,918 - model_evaluation - INFO - 
+============================================================
+2026-03-16 17:45:17,919 - model_evaluation - INFO - DETAILED REPORT - Logistic Regression (Accuracy)
+2026-03-16 17:45:17,919 - model_evaluation - INFO - ============================================================
+2026-03-16 17:45:17,931 - model_evaluation - INFO - 
+              precision    recall  f1-score   support
+
+      No CHD       0.85      0.98      0.91       719
+         CHD       0.35      0.05      0.08       129
+
+    accuracy                           0.84       848
+   macro avg       0.60      0.52      0.50       848
+weighted avg       0.78      0.84      0.79       848
+
+2026-03-16 17:45:17,932 - __main__ - INFO - 
+======================================================================
+2026-03-16 17:45:17,932 - __main__ - INFO - PIPELINE COMPLETED SUCCESSFULLY
+2026-03-16 17:45:17,932 - __main__ - INFO - ======================================================================
+2026-03-16 17:45:17,933 - __main__ - INFO - 
+[OK] Best Model: Logistic Regression (Accuracy)
+2026-03-16 17:45:17,933 - __main__ - INFO - [OK] Models saved to: C:\Users\User\OneDrive - MMU\machine-learning-cardiovascular\models
+2026-03-16 17:45:17,933 - __main__ - INFO - [OK] Results saved to: C:\Users\User\OneDrive - MMU\machine-learning-cardiovascular\results
+2026-03-16 17:45:17,934 - __main__ - INFO - [OK] Log file: C:\Users\User\OneDrive - MMU\machine-learning-cardiovascular\results\pipeline.log
+2026-03-16 17:45:17,934 - __main__ - INFO - 
+Now ready for Web App integration!
+
+2026-03-24 17:15:58,319 - __main__ - INFO - 
+======================================================================
+2026-03-24 17:15:58,321 - __main__ - INFO - CARDIOVASCULAR RISK PREDICTION - COMPLETE PIPELINE
+2026-03-24 17:15:58,321 - __main__ - INFO - ======================================================================
+
+2026-03-24 17:15:58,322 - __main__ - INFO - PHASE 1: DATA PREPROCESSING
+2026-03-24 17:15:58,322 - __main__ - INFO - ----------------------------------------------------------------------
+2026-03-24 17:15:58,322 - data_preprocessing - INFO - Loading data from C:\Users\User\OneDrive - MMU\machine-learning-cardiovascular\Framingham Data\framingham.csv
+2026-03-24 17:15:58,381 - data_preprocessing - INFO - Data shape: (4240, 16)
+2026-03-24 17:15:58,382 - data_preprocessing - INFO - Validating data...
+2026-03-24 17:15:58,389 - data_preprocessing - WARNING - Missing values detected:
+education     105
+cigsPerDay     29
+BPMeds         53
+totChol        50
+BMI            19
+heartRate       1
+glucose       388
+dtype: int64
+2026-03-24 17:15:58,393 - data_preprocessing - INFO - Data types:
+male                 int64
+age                  int64
+education          float64
+currentSmoker        int64
+cigsPerDay         float64
+BPMeds             float64
+prevalentStroke      int64
+prevalentHyp         int64
+diabetes             int64
+totChol            float64
+sysBP              float64
+diaBP              float64
+BMI                float64
+heartRate          float64
+glucose            float64
+TenYearCHD           int64
+dtype: object
+2026-03-24 17:15:58,395 - data_preprocessing - INFO - Splitting data: train=80%, test=20%
+2026-03-24 17:15:58,396 - data_preprocessing - INFO - Encoding categorical variables...
+2026-03-24 17:15:58,408 - data_preprocessing - INFO - Binary features: ['male', 'currentSmoker', 'BPMeds', 'prevalentStroke', 'prevalentHyp', 'diabetes']
+2026-03-24 17:15:58,410 - data_preprocessing - INFO - Categorical features: ['education']
+2026-03-24 17:15:58,411 - data_preprocessing - INFO - Continuous features: ['age', 'cigsPerDay', 'totChol', 'sysBP', 'diaBP', 'BMI', 'heartRate', 'glucose']
+2026-03-24 17:15:58,424 - data_preprocessing - INFO - One-hot encoded 'education': ['edu_1.0', 'edu_2.0', 'edu_3.0', 'edu_4.0']
+2026-03-24 17:15:58,444 - data_preprocessing - INFO - Training set size: 3392 (515 positive)
+2026-03-24 17:15:58,445 - data_preprocessing - INFO - Test set size: 848 (129 positive)
+2026-03-24 17:15:58,446 - data_preprocessing - INFO - Imputing missing values with median strategy...
+2026-03-24 17:15:58,470 - data_preprocessing - INFO - Normalizing features...
+2026-03-24 17:15:58,486 - data_preprocessing - INFO - Preprocessor saved to C:\Users\User\OneDrive - MMU\machine-learning-cardiovascular\models\preprocessor.pkl
+2026-03-24 17:15:58,494 - __main__ - INFO - 
+
+PHASE 2: MODEL TRAINING
+2026-03-24 17:15:58,495 - __main__ - INFO - ----------------------------------------------------------------------
+2026-03-24 17:15:58,495 - model_training - INFO - Building all models...
+2026-03-24 17:15:58,496 - model_training - INFO - Built 9 models: ['Logistic Regression (Balanced)', 'Logistic Regression (Accuracy)', 'Random Forest', 'Extra Trees', 'Gradient Boosting', 'Hist Gradient Boosting', 'SVM (RBF)', 'XGBoost', 'ANN']
+2026-03-24 17:15:58,497 - model_training - INFO - 
+Performing 3-Fold Stratified Cross-Validation...
+2026-03-24 17:16:05,649 - model_training - INFO - Logistic Regression (Balanced): ROC-AUC = 0.7274 (+/- 0.0282)
+2026-03-24 17:16:10,816 - model_training - INFO - Logistic Regression (Accuracy): ROC-AUC = 0.7271 (+/- 0.0283)
+2026-03-24 17:16:20,736 - model_training - INFO - Random Forest: ROC-AUC = 0.7186 (+/- 0.0214)
+2026-03-24 17:16:24,075 - model_training - INFO - Extra Trees: ROC-AUC = 0.7063 (+/- 0.0242)
+2026-03-24 17:16:26,797 - model_training - INFO - Gradient Boosting: ROC-AUC = 0.7041 (+/- 0.0199)
+2026-03-24 17:16:28,056 - model_training - INFO - Hist Gradient Boosting: ROC-AUC = 0.6905 (+/- 0.0179)
+2026-03-24 17:16:31,732 - model_training - INFO - SVM (RBF): ROC-AUC = 0.6735 (+/- 0.0228)
+2026-03-24 17:16:32,552 - model_training - INFO - XGBoost: ROC-AUC = 0.6943 (+/- 0.0164)
+2026-03-24 17:16:32,553 - model_training - INFO - ANN: Skipped in CV (evaluated on test set)
+2026-03-24 17:16:32,553 - model_training - INFO - 
+============================================================
+2026-03-24 17:16:32,554 - model_training - INFO - TRAINING ALL MODELS
+2026-03-24 17:16:32,554 - model_training - INFO - ============================================================
+2026-03-24 17:16:32,555 - model_training - INFO - Training Logistic Regression (Balanced)...
+2026-03-24 17:16:32,585 - model_training - INFO - [OK] Logistic Regression (Balanced) trained
+2026-03-24 17:16:32,585 - model_training - INFO - Training Logistic Regression (Accuracy)...
+2026-03-24 17:16:32,614 - model_training - INFO - [OK] Logistic Regression (Accuracy) trained
+2026-03-24 17:16:32,614 - model_training - INFO - Training Random Forest...
+2026-03-24 17:16:36,159 - model_training - INFO - [OK] Random Forest trained
+2026-03-24 17:16:36,160 - model_training - INFO - Training Extra Trees...
+2026-03-24 17:16:38,191 - model_training - INFO - [OK] Extra Trees trained
+2026-03-24 17:16:38,192 - model_training - INFO - Training Gradient Boosting...
+2026-03-24 17:16:41,006 - model_training - INFO - [OK] Gradient Boosting trained
+2026-03-24 17:16:41,007 - model_training - INFO - Training Hist Gradient Boosting...
+2026-03-24 17:16:46,858 - model_training - INFO - [OK] Hist Gradient Boosting trained
+2026-03-24 17:16:46,859 - model_training - INFO - Training SVM (RBF)...
+2026-03-24 17:16:51,710 - model_training - INFO - [OK] SVM (RBF) trained
+2026-03-24 17:16:51,711 - model_training - INFO - Training XGBoost...
+2026-03-24 17:16:52,414 - model_training - INFO - [OK] XGBoost trained
+2026-03-24 17:16:52,415 - model_training - INFO - Training ANN...
+2026-03-24 17:16:54,158 - model_training - INFO - [OK] ANN trained
+2026-03-24 17:16:54,158 - model_training - INFO - 
+[OK] All 9 models trained successfully
+
+2026-03-24 17:16:54,159 - model_training - INFO - 
+Saving models to C:\Users\User\OneDrive - MMU\machine-learning-cardiovascular\models...
+2026-03-24 17:16:54,167 - model_training - INFO - [OK] Logistic Regression (Balanced) saved to C:\Users\User\OneDrive - MMU\machine-learning-cardiovascular\models\Logistic_Regression_Balanced.pkl
+2026-03-24 17:16:54,170 - model_training - INFO - [OK] Logistic Regression (Accuracy) saved to C:\Users\User\OneDrive - MMU\machine-learning-cardiovascular\models\Logistic_Regression_Accuracy.pkl
+2026-03-24 17:16:54,462 - model_training - INFO - [OK] Random Forest saved to C:\Users\User\OneDrive - MMU\machine-learning-cardiovascular\models\Random_Forest.pkl
+2026-03-24 17:16:55,017 - model_training - INFO - [OK] Extra Trees saved to C:\Users\User\OneDrive - MMU\machine-learning-cardiovascular\models\Extra_Trees.pkl
+2026-03-24 17:16:55,054 - model_training - INFO - [OK] Gradient Boosting saved to C:\Users\User\OneDrive - MMU\machine-learning-cardiovascular\models\Gradient_Boosting.pkl
+2026-03-24 17:16:55,159 - model_training - INFO - [OK] Hist Gradient Boosting saved to C:\Users\User\OneDrive - MMU\machine-learning-cardiovascular\models\Hist_Gradient_Boosting.pkl
+2026-03-24 17:16:55,166 - model_training - INFO - [OK] SVM (RBF) saved to C:\Users\User\OneDrive - MMU\machine-learning-cardiovascular\models\SVM_RBF.pkl
+2026-03-24 17:16:55,188 - model_training - INFO - [OK] XGBoost saved to C:\Users\User\OneDrive - MMU\machine-learning-cardiovascular\models\XGBoost.pkl
+2026-03-24 17:16:55,202 - model_training - INFO - [OK] ANN saved to C:\Users\User\OneDrive - MMU\machine-learning-cardiovascular\models\ANN.pkl
+2026-03-24 17:16:55,202 - __main__ - INFO - 
+
+PHASE 3: MODEL OPTIMIZATION
+2026-03-24 17:16:55,203 - __main__ - INFO - ----------------------------------------------------------------------
+2026-03-24 17:16:55,216 - model_optimization - INFO - 
+======================================================================
+2026-03-24 17:16:55,217 - model_optimization - INFO - MODEL OPTIMIZATION & TUNING
+2026-03-24 17:16:55,217 - model_optimization - INFO - ======================================================================
+2026-03-24 17:16:55,218 - model_optimization - INFO - 
+Tuning Logistic Regression...
+2026-03-24 17:17:00,355 - model_optimization - INFO - Best params: {'C': 0.01, 'class_weight': 'balanced', 'max_iter': 500, 'penalty': 'l2', 'solver': 'saga'}
+2026-03-24 17:17:00,356 - model_optimization - INFO - Best CV ROC-AUC: 0.7428
+2026-03-24 17:17:00,356 - model_optimization - INFO - 
+Tuning Random Forest...
+2026-03-24 17:34:10,266 - model_optimization - INFO - Best params: {'class_weight': 'balanced_subsample', 'max_depth': None, 'min_samples_leaf': 8, 'min_samples_split': 5, 'n_estimators': 500}
+2026-03-24 17:34:10,273 - model_optimization - INFO - Best CV ROC-AUC: 0.7284
+2026-03-24 17:34:10,276 - model_optimization - INFO - 
+Tuning Gradient Boosting...
+2026-03-24 17:46:30,707 - model_optimization - INFO - Best params: {'learning_rate': 0.01, 'max_depth': 3, 'min_samples_split': 10, 'n_estimators': 200, 'subsample': 0.7}
+2026-03-24 17:46:30,708 - model_optimization - INFO - Best CV ROC-AUC: 0.7332
+2026-03-24 17:46:30,712 - model_optimization - INFO - 
+Optimizing threshold for Logistic Regression (Tuned)...
+2026-03-24 17:46:31,810 - model_optimization - INFO - Optimal threshold: 0.550 (F1: 0.3784)
+2026-03-24 17:46:31,813 - model_optimization - INFO - 
+Creating Voting Ensemble...
+2026-03-24 17:46:31,814 - model_optimization - INFO - Voting Ensemble created with 3 models
+2026-03-24 17:46:31,821 - model_optimization - INFO - 
+Saving optimized models to ..\models...
+2026-03-24 17:46:31,831 - model_optimization - INFO - [OK] Logistic Regression (Tuned) saved to ..\models\Logistic_Regression_Tuned_optimized.pkl
+2026-03-24 17:46:32,063 - model_optimization - INFO - [OK] Random Forest (Tuned) saved to ..\models\Random_Forest_Tuned_optimized.pkl
+2026-03-24 17:46:32,077 - model_optimization - INFO - [OK] Gradient Boosting (Tuned) saved to ..\models\Gradient_Boosting_Tuned_optimized.pkl
+2026-03-24 17:46:32,296 - model_optimization - INFO - [OK] Voting Ensemble saved to ..\models\Voting_Ensemble_optimized.pkl
+2026-03-24 17:46:32,297 - model_optimization - INFO - 
+[OK] Optimization completed. Created 4 optimized models.
+2026-03-24 17:46:32,298 - __main__ - INFO - 
+
+PHASE 4: MODEL EVALUATION
+2026-03-24 17:46:32,299 - __main__ - INFO - ----------------------------------------------------------------------
+2026-03-24 17:46:32,302 - model_evaluation - INFO - 
+============================================================
+2026-03-24 17:46:32,302 - model_evaluation - INFO - MODEL EVALUATION
+2026-03-24 17:46:32,303 - model_evaluation - INFO - ============================================================
+2026-03-24 17:46:32,303 - model_evaluation - INFO - 
+Evaluating Logistic Regression (Balanced)...
+2026-03-24 17:46:32,338 - model_evaluation - INFO - Logistic Regression (Balanced) Results:
+2026-03-24 17:46:32,338 - model_evaluation - INFO -   Accuracy: 0.6698
+2026-03-24 17:46:32,339 - model_evaluation - INFO -   Precision: 0.2541
+2026-03-24 17:46:32,339 - model_evaluation - INFO -   Recall: 0.6047
+2026-03-24 17:46:32,339 - model_evaluation - INFO -   F1-Score: 0.3578
+2026-03-24 17:46:32,340 - model_evaluation - INFO -   ROC-AUC: 0.6975
+2026-03-24 17:46:32,340 - model_evaluation - INFO - 
+Evaluating Logistic Regression (Accuracy)...
+2026-03-24 17:46:32,358 - model_evaluation - INFO - Logistic Regression (Accuracy) Results:
+2026-03-24 17:46:32,358 - model_evaluation - INFO -   Accuracy: 0.8420
+2026-03-24 17:46:32,358 - model_evaluation - INFO -   Precision: 0.3529
+2026-03-24 17:46:32,359 - model_evaluation - INFO -   Recall: 0.0465
+2026-03-24 17:46:32,359 - model_evaluation - INFO -   F1-Score: 0.0822
+2026-03-24 17:46:32,360 - model_evaluation - INFO -   ROC-AUC: 0.6990
+2026-03-24 17:46:32,360 - model_evaluation - INFO - 
+Evaluating Random Forest...
+2026-03-24 17:46:33,066 - model_evaluation - INFO - Random Forest Results:
+2026-03-24 17:46:33,067 - model_evaluation - INFO -   Accuracy: 0.8314
+2026-03-24 17:46:33,067 - model_evaluation - INFO -   Precision: 0.3600
+2026-03-24 17:46:33,067 - model_evaluation - INFO -   Recall: 0.1395
+2026-03-24 17:46:33,068 - model_evaluation - INFO -   F1-Score: 0.2011
+2026-03-24 17:46:33,068 - model_evaluation - INFO -   ROC-AUC: 0.6564
+2026-03-24 17:46:33,069 - model_evaluation - INFO - 
+Evaluating Extra Trees...
+2026-03-24 17:46:33,889 - model_evaluation - INFO - Extra Trees Results:
+2026-03-24 17:46:33,890 - model_evaluation - INFO -   Accuracy: 0.7618
+2026-03-24 17:46:33,890 - model_evaluation - INFO -   Precision: 0.2614
+2026-03-24 17:46:33,891 - model_evaluation - INFO -   Recall: 0.3101
+2026-03-24 17:46:33,891 - model_evaluation - INFO -   F1-Score: 0.2837
+2026-03-24 17:46:33,892 - model_evaluation - INFO -   ROC-AUC: 0.6696
+2026-03-24 17:46:33,892 - model_evaluation - INFO - 
+Evaluating Gradient Boosting...
+2026-03-24 17:46:33,934 - model_evaluation - INFO - Gradient Boosting Results:
+2026-03-24 17:46:33,934 - model_evaluation - INFO -   Accuracy: 0.8384
+2026-03-24 17:46:33,935 - model_evaluation - INFO -   Precision: 0.3750
+2026-03-24 17:46:33,935 - model_evaluation - INFO -   Recall: 0.0930
+2026-03-24 17:46:33,935 - model_evaluation - INFO -   F1-Score: 0.1491
+2026-03-24 17:46:33,936 - model_evaluation - INFO -   ROC-AUC: 0.6553
+2026-03-24 17:46:33,936 - model_evaluation - INFO - 
+Evaluating Hist Gradient Boosting...
+2026-03-24 17:46:34,035 - model_evaluation - INFO - Hist Gradient Boosting Results:
+2026-03-24 17:46:34,035 - model_evaluation - INFO -   Accuracy: 0.8314
+2026-03-24 17:46:34,036 - model_evaluation - INFO -   Precision: 0.3158
+2026-03-24 17:46:34,036 - model_evaluation - INFO -   Recall: 0.0930
+2026-03-24 17:46:34,037 - model_evaluation - INFO -   F1-Score: 0.1437
+2026-03-24 17:46:34,037 - model_evaluation - INFO -   ROC-AUC: 0.6278
+2026-03-24 17:46:34,037 - model_evaluation - INFO - 
+Evaluating SVM (RBF)...
+2026-03-24 17:46:34,869 - model_evaluation - INFO - SVM (RBF) Results:
+2026-03-24 17:46:34,869 - model_evaluation - INFO -   Accuracy: 0.6910
+2026-03-24 17:46:34,870 - model_evaluation - INFO -   Precision: 0.2308
+2026-03-24 17:46:34,870 - model_evaluation - INFO -   Recall: 0.4419
+2026-03-24 17:46:34,871 - model_evaluation - INFO -   F1-Score: 0.3032
+2026-03-24 17:46:34,871 - model_evaluation - INFO -   ROC-AUC: 0.6396
+2026-03-24 17:46:34,872 - model_evaluation - INFO - 
+Evaluating XGBoost...
+2026-03-24 17:46:34,980 - model_evaluation - INFO - XGBoost Results:
+2026-03-24 17:46:34,981 - model_evaluation - INFO -   Accuracy: 0.6969
+2026-03-24 17:46:34,982 - model_evaluation - INFO -   Precision: 0.2288
+2026-03-24 17:46:34,982 - model_evaluation - INFO -   Recall: 0.4186
+2026-03-24 17:46:34,982 - model_evaluation - INFO -   F1-Score: 0.2959
+2026-03-24 17:46:34,983 - model_evaluation - INFO -   ROC-AUC: 0.6408
+2026-03-24 17:46:34,983 - model_evaluation - INFO - 
+Evaluating ANN...
+2026-03-24 17:46:35,040 - model_evaluation - INFO - ANN Results:
+2026-03-24 17:46:35,040 - model_evaluation - INFO -   Accuracy: 0.8467
+2026-03-24 17:46:35,041 - model_evaluation - INFO -   Precision: 0.4667
+2026-03-24 17:46:35,041 - model_evaluation - INFO -   Recall: 0.0543
+2026-03-24 17:46:35,042 - model_evaluation - INFO -   F1-Score: 0.0972
+2026-03-24 17:46:35,042 - model_evaluation - INFO -   ROC-AUC: 0.6928
+2026-03-24 17:46:35,042 - model_evaluation - INFO - 
+Evaluating Logistic Regression (Tuned)...
+2026-03-24 17:46:35,063 - model_evaluation - INFO - Logistic Regression (Tuned) Results:
+2026-03-24 17:46:35,064 - model_evaluation - INFO -   Accuracy: 0.6863
+2026-03-24 17:46:35,064 - model_evaluation - INFO -   Precision: 0.2646
+2026-03-24 17:46:35,064 - model_evaluation - INFO -   Recall: 0.5969
+2026-03-24 17:46:35,065 - model_evaluation - INFO -   F1-Score: 0.3667
+2026-03-24 17:46:35,065 - model_evaluation - INFO -   ROC-AUC: 0.7008
+2026-03-24 17:46:35,065 - model_evaluation - INFO - 
+Evaluating Random Forest (Tuned)...
+2026-03-24 17:46:35,711 - model_evaluation - INFO - Random Forest (Tuned) Results:
+2026-03-24 17:46:35,711 - model_evaluation - INFO -   Accuracy: 0.7795
+2026-03-24 17:46:35,712 - model_evaluation - INFO -   Precision: 0.2958
+2026-03-24 17:46:35,712 - model_evaluation - INFO -   Recall: 0.3256
+2026-03-24 17:46:35,713 - model_evaluation - INFO -   F1-Score: 0.3100
+2026-03-24 17:46:35,713 - model_evaluation - INFO -   ROC-AUC: 0.6711
+2026-03-24 17:46:35,714 - model_evaluation - INFO - 
+Evaluating Gradient Boosting (Tuned)...
+2026-03-24 17:46:35,740 - model_evaluation - INFO - Gradient Boosting (Tuned) Results:
+2026-03-24 17:46:35,741 - model_evaluation - INFO -   Accuracy: 0.8479
+2026-03-24 17:46:35,741 - model_evaluation - INFO -   Precision: 0.5000
+2026-03-24 17:46:35,742 - model_evaluation - INFO -   Recall: 0.0155
+2026-03-24 17:46:35,742 - model_evaluation - INFO -   F1-Score: 0.0301
+2026-03-24 17:46:35,743 - model_evaluation - INFO -   ROC-AUC: 0.6833
+2026-03-24 17:46:35,744 - model_evaluation - INFO - 
+Evaluating Voting Ensemble...
+2026-03-24 17:46:35,747 - __main__ - ERROR - 
+[ERROR] Pipeline failed with error: This VotingClassifier instance is not fitted yet. Call 'fit' with appropriate arguments before using this estimator.
+Traceback (most recent call last):
+  File "C:\Users\User\OneDrive - MMU\machine-learning-cardiovascular\src\run_pipeline.py", line 86, in main
+    evaluator, best_model = evaluate_models_pipeline(
+                            ~~~~~~~~~~~~~~~~~~~~~~~~^
+        combined_models, X_test, y_test,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        results_dir=str(results_dir)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\User\OneDrive - MMU\machine-learning-cardiovascular\src\model_evaluation.py", line 191, in evaluate_models_pipeline
+    evaluator.evaluate_all_models(trained_models, X_test, y_test)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\OneDrive - MMU\machine-learning-cardiovascular\src\model_evaluation.py", line 76, in evaluate_all_models
+    self.evaluate_model(model, X_test, y_test, name)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\OneDrive - MMU\machine-learning-cardiovascular\src\model_evaluation.py", line 36, in evaluate_model
+    y_pred = model.predict(X_test)
+  File "C:\Users\User\OneDrive - MMU\machine-learning-cardiovascular\.venv\Lib\site-packages\sklearn\ensemble\_voting.py", line 420, in predict
+    check_is_fitted(self)
+    ~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\User\OneDrive - MMU\machine-learning-cardiovascular\.venv\Lib\site-packages\sklearn\utils\validation.py", line 1705, in check_is_fitted
+    raise NotFittedError(msg % {"name": type(estimator).__name__})
+sklearn.exceptions.NotFittedError: This VotingClassifier instance is not fitted yet. Call 'fit' with appropriate arguments before using this estimator.

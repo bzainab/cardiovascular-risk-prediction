@@ -1,0 +1,136 @@
+{% extends "base.html" %}
+
+{% block title %}Disclaimer - Cardiovascular Risk Prediction{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <h1 class="mb-4">Legal Disclaimer & Important Notice</h1>
+
+            <div class="alert alert-danger" role="alert">
+                <h4 class="alert-heading">⚠️ Critical Disclaimer</h4>
+                <p class="mb-0">
+                    <strong>This tool is strictly for educational and research purposes only.</strong>
+                    It is NOT intended for clinical diagnosis, treatment, or clinical decision making.
+                </p>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header bg-danger text-white">
+                    <h3 class="mb-0">NOT Medical Advice</h3>
+                </div>
+                <div class="card-body">
+                    <p>
+                        The predictions provided by this tool are simulated estimates based on machine learning models 
+                        trained on the Framingham Heart Study dataset. They are <strong>not</strong>:
+                    </p>
+                    <ul>
+                        <li>Medical diagnoses</li>
+                        <li>Clinical recommendations</li>
+                        <li>Substitutes for professional medical evaluation</li>
+                        <li>Approved for clinical use or medical decision-making</li>
+                        <li>Validated for individual patient risk assessment</li>
+                    </ul>
+                    <p class="mt-3">
+                        <strong>If you have cardiovascular concerns, please consult a qualified healthcare professional 
+                        who can conduct a proper clinical evaluation.</strong>
+                    </p>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header bg-danger text-white">
+                    <h3 class="mb-0">Limitations</h3>
+                </div>
+                <div class="card-body">
+                    <h5>Model Limitations</h5>
+                    <ul>
+                        <li><strong>Fixed Features:</strong> Model trained on specific Framingham dataset features; may not apply to all populations</li>
+                        <li><strong>Temporal Gap:</strong> Framingham data is historical; modern risk factors may differ</li>
+                        <li><strong>Population-Specific:</strong> Primarily derived from North American cohort; generalizability to other populations uncertain</li>
+                        <li><strong>Predictive Performance:</strong> ROC-AUC ~0.70 indicates moderate predictive accuracy; not suitable for individual risk assessment</li>
+                        <li><strong>Missing Information:</strong> Many clinical variables not captured in this tool</li>
+                        <li><strong>Class Imbalance:</strong> Baseline CHD prevalence in training data (15%) may differ from clinical settings</li>
+                    </ul>
+
+                    <h5 class="mt-3">User Input Limitations</h5>
+                    <ul>
+                        <li>Tool cannot verify accuracy of self-reported medical information</li>
+                        <li>Single-point-in-time assessment; risk evolves over time</li>
+                        <li>Does not account for recent medical treatment changes</li>
+                        <li>Cannot capture qualitative clinical judgment</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header bg-danger text-white">
+                    <h3 class="mb-0">No Liability</h3>
+                </div>
+                <div class="card-body">
+                    <p>
+                        The developers of this tool assume no liability for:
+                    </p>
+                    <ul>
+                        <li>Decisions made based on predictions from this tool</li>
+                        <li>Medical outcomes of individuals who used this tool</li>
+                        <li>Errors or inaccuracies in predictions</li>
+                        <li>Misuse of this tool for clinical or diagnostic purposes</li>
+                        <li>Breach of data confidentiality (data is not stored)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header bg-warning text-dark">
+                    <h3 class="mb-0">When to Seek Medical Attention</h3>
+                </div>
+                <div class="card-body">
+                    <p><strong>Consult a healthcare provider if you experience:</strong></p>
+                    <ul>
+                        <li>Chest pain or pressure</li>
+                        <li>Shortness of breath</li>
+                        <li>Rapid or irregular heartbeat</li>
+                        <li>Fainting or severe dizziness</li>
+                        <li>Persistent fatigue or weakness</li>
+                        <li>New or worsening symptoms</li>
+                    </ul>
+                    <p><strong>Emergency:</strong> Call emergency services (911 in US) for severe chest pain or other signs of heart attack.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header bg-info text-white">
+                    <h3 class="mb-0">Privacy & Data</h3>
+                </div>
+                <div class="card-body">
+                    <p>
+                        <strong>No data is stored:</strong> All information you enter is processed locally in your browser 
+                        and sent only to make the prediction. No data is logged or retained by this server.
+                    </p>
+                    <p>
+                        <strong>Educational Use Only:</strong> This system is provided for learning about machine learning 
+                        in healthcare, not for actual patient risk assessment.
+                    </p>
+                </div>
+            </div>
+
+            <div class="alert alert-success mt-4">
+                <strong>✓ Appropriate Uses:</strong>
+                <ul class="mb-0">
+                    <li>Learning about cardiovascular epidemiology</li>
+                    <li>Understanding machine learning applications in medicine</li>
+                    <li>Exploring the Framingham Heart Study dataset</li>
+                    <li>Educational demonstrations and research</li>
+                    <li>Developing awareness of health risk factors</li>
+                </ul>
+            </div>
+
+            <p class="text-muted text-center mt-5">
+                <em>Last Updated: 2026 | For Educational Purposes Only</em>
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}

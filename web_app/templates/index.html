@@ -1,0 +1,537 @@
+{% extends "base.html" %}
+
+{% block title %}Cardiovascular Risk Assessment{% endblock %}
+
+{% block content %}
+<div class="prediction-container">
+    <!-- Form Section -->
+    <div class="form-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <div class="form-header mb-5">
+                        <h1 class="gradient-text mb-2">Cardiovascular Risk Assessment</h1>
+                        <p class="lead text-dark">Enter your health information to calculate your 10-year cardiovascular disease risk</p>
+                    </div>
+
+                    <div class="card form-card shadow-lg border-0">
+                        <div class="card-body p-5">
+                            <form id="predictionForm">
+                                <!-- Personal Information Section -->
+                                <div class="form-section-label">👤 Personal Information</div>
+                                <div class="row">
+                                    <div class="col-md-6 mb-4">
+                                        <label for="age" class="form-label fw-600">Age (years)</label>
+                                        <input type="number" class="form-control form-control-lg" id="age" name="age" min="1" max="120" placeholder="e.g., 55" required>
+                                    </div>
+                                    <div class="col-md-6 mb-4">
+                                        <label for="male" class="form-label fw-600">Gender</label>
+                                        <select class="form-select form-select-lg" id="male" name="male" required>
+                                            <option value="">-- Select --</option>
+                                            <option value="1">Male</option>
+                                            <option value="0">Female</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <!-- Blood Pressure Section -->
+                                <div class="form-section-label">❤️ Blood Pressure</div>
+                                <div class="row">
+                                    <div class="col-md-6 mb-4">
+                                        <label for="sysBP" class="form-label fw-600">Systolic BP (mmHg)</label>
+                                        <input type="number" class="form-control form-control-lg" id="sysBP" name="sysBP" min="60" max="300" placeholder="e.g., 130" required>
+                                    </div>
+                                    <div class="col-md-6 mb-4">
+                                        <label for="diaBP" class="form-label fw-600">Diastolic BP (mmHg)</label>
+                                        <input type="number" class="form-control form-control-lg" id="diaBP" name="diaBP" min="30" max="200" placeholder="e.g., 80" required>
+                                    </div>
+                                </div>
+
+                                <!-- Cholesterol Section -->
+                                <div class="form-section-label">🧬 Cholesterol & Glucose</div>
+                                <div class="row">
+                                    <div class="col-md-6 mb-4">
+                                        <label for="totChol" class="form-label fw-600">Total Cholesterol (mg/dL)</label>
+                                        <input type="number" class="form-control form-control-lg" id="totChol" name="totChol" min="50" max="600" placeholder="e.g., 240" required>
+                                    </div>
+                                    <div class="col-md-6 mb-4">
+                                        <label for="HDL" class="form-label fw-600">HDL Cholesterol (mg/dL)</label>
+                                        <input type="number" class="form-control form-control-lg" id="HDL" name="HDL" min="10" max="400" placeholder="e.g., 40" required>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6 mb-4">
+                                        <label for="glucose" class="form-label fw-600">Glucose (mg/dL)</label>
+                                        <input type="number" class="form-control form-control-lg" id="glucose" name="glucose" min="40" max="400" placeholder="e.g., 100" required>
+                                    </div>
+                                    <div class="col-md-6 mb-4">
+                                        <label for="BMI" class="form-label fw-600">BMI (kg/m²)</label>
+                                        <input type="number" class="form-control form-control-lg" id="BMI" name="BMI" step="0.1" min="10" max="60" placeholder="e.g., 25" required>
+                                    </div>
+                                </div>
+
+                                <!-- Physical Activity Section -->
+                                <div class="form-section-label">🏃 Physical Activity & Lifestyle</div>
+                                <div class="row">
+                                    <div class="col-md-6 mb-4">
+                                        <label for="heartRate" class="form-label fw-600">Heart Rate (bpm)</label>
+                                        <input type="number" class="form-control form-control-lg" id="heartRate" name="heartRate" min="30" max="200" placeholder="e.g., 70" required>
+                                    </div>
+                                    <div class="col-md-6 mb-4">
+                                        <label for="cigsPerDay" class="form-label fw-600">Cigarettes per Day</label>
+                                        <input type="number" class="form-control form-control-lg" id="cigsPerDay" name="cigsPerDay" min="0" max="100" placeholder="e.g., 0" required>
+                                    </div>
+                                </div>
+
+                                <!-- Medical History Section -->
+                                <div class="form-section-label">📋 Medical History</div>
+                                <div class="row">
+                                    <div class="col-md-6 mb-4">
+                                        <label for="currentSmoker" class="form-label fw-600">Current Smoker</label>
+                                        <select class="form-select form-select-lg" id="currentSmoker" name="currentSmoker" required>
+                                            <option value="">-- Select --</option>
+                                            <option value="1">Yes</option>
+                                            <option value="0">No</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6 mb-4">
+                                        <label for="diabetes" class="form-label fw-600">Diabetes</label>
+                                        <select class="form-select form-select-lg" id="diabetes" name="diabetes" required>
+                                            <option value="">-- Select --</option>
+                                            <option value="1">Yes</option>
+                                            <option value="0">No</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6 mb-4">
+                                        <label for="BPMeds" class="form-label fw-600">Blood Pressure Medication</label>
+                                        <select class="form-select form-select-lg" id="BPMeds" name="BPMeds" required>
+                                            <option value="">-- Select --</option>
+                                            <option value="1">Yes</option>
+                                            <option value="0">No</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6 mb-4">
+                                        <label for="prevalentHyp" class="form-label fw-600">Hypertension</label>
+                                        <select class="form-select form-select-lg" id="prevalentHyp" name="prevalentHyp" required>
+                                            <option value="">-- Select --</option>
+                                            <option value="1">Yes</option>
+                                            <option value="0">No</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6 mb-4">
+                                        <label for="prevalentStroke" class="form-label fw-600">History of Stroke</label>
+                                        <select class="form-select form-select-lg" id="prevalentStroke" name="prevalentStroke" required>
+                                            <option value="">-- Select --</option>
+                                            <option value="1">Yes</option>
+                                            <option value="0">No</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6 mb-4">
+                                        <label for="education" class="form-label fw-600">Education Level</label>
+                                        <select class="form-select form-select-lg" id="education" name="education" required>
+                                            <option value="">-- Select --</option>
+                                            <option value="1">Some High School</option>
+                                            <option value="2">High School / GED</option>
+                                            <option value="3">Some College</option>
+                                            <option value="4">College or Higher</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <!-- Submit Button -->
+                                <button type="submit" class="btn btn-calculate btn-lg w-100 mt-5 fw-600">
+                                    <i class="fas fa-calculator"></i> Calculate Risk
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Results Section -->
+    <div id="resultsSection" class="results-section" style="display: none;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <!-- Primary Risk Card -->
+                    <div class="primary-risk-card shadow-lg mb-5">
+                        <div class="risk-content">
+                            <div class="risk-gauge-container">
+                                <canvas id="riskGaugeChart" height="150" width="150"></canvas>
+                            </div>
+                            <div class="risk-details">
+                                <h2>Your 10-Year Risk</h2>
+                                <div class="risk-percentage">
+                                    <span id="riskPercentageValue">0</span><span>%</span>
+                                </div>
+                                <div id="riskAssessmentText" class="risk-text"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Model Comparison Chart -->
+                    <div class="card model-comparison shadow-lg mb-5 border-0">
+                        <div class="card-header bg-gradient-primary text-white py-4 rounded-top">
+                            <h5 class="mb-0"><i class="fas fa-chart-bar"></i> Model Predictions Comparison</h5>
+                        </div>
+                        <div class="card-body p-4">
+                            <canvas id="modelComparisonChart" height="80"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Next Steps Card -->
+                    <div id="nextStepsCard" class="card shadow-lg mb-5 border-0">
+                        <div class="card-header text-white py-4 rounded-top" id="nextStepsHeader">
+                            <h5 class="mb-0"><i class="fas fa-cliplist"></i> Recommended Next Steps</h5>
+                        </div>
+                        <div class="card-body p-4">
+                            <div id="nextStepsContent"></div>
+                        </div>
+                    </div>
+
+                    <!-- Detailed Results Table -->
+                    <div class="card detailed-results shadow-lg border-0 mb-5">
+                        <div class="card-header bg-gradient-secondary text-white py-4 rounded-top">
+                            <h5 class="mb-0"><i class="fas fa-table"></i> Detailed Model Results</h5>
+                        </div>
+                        <div class="card-body p-4">
+                            <div class="table-responsive">
+                                <table class="table table-hover" id="resultsTable">
+                                    <thead>
+                                        <tr>
+                                            <th>Model</th>
+                                            <th>Risk Probability</th>
+                                            <th>Risk Level</th>
+                                            <th>ROC-AUC Score</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Disclaimer -->
+                    <div class="alert alert-warning border-2 mb-5">
+                        <h6 class="alert-heading"><i class="fas fa-exclamation-triangle"></i> Important Disclaimer</h6>
+                        <p class="mb-0">This assessment tool is for educational and informational purposes only. It should <strong>NOT</strong> be used for medical diagnosis or to replace professional medical advice. 
+                        Please consult with a qualified healthcare provider to discuss your cardiovascular risk and appropriate screening or treatment options.</p>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="text-center mb-5">
+                        <button onclick="scrollToForm()" class="btn btn-outline-primary btn-lg me-2">
+                            <i class="fas fa-redo"></i> Recalculate
+                        </button>
+                        <button onclick="downloadResults()" class="btn btn-outline-success btn-lg">
+                            <i class="fas fa-download"></i> Download Results
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Chart.js Library -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.js"></script>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // Store charts globally
+    let gaugeChart = null;
+    let modelChart = null;
+
+    function scrollToForm() {
+        document.querySelector('.form-section').scrollIntoView({ behavior: 'smooth' });
+        document.getElementById('resultsSection').style.display = 'none';
+    }
+
+    function downloadResults() {
+        // Create a simple text file with results
+        const riskPercent = document.getElementById('riskPercentageValue').innerText;
+        const riskLevel = document.getElementById('riskAssessmentText').innerText;
+        
+        let content = "CARDIOVASCULAR RISK ASSESSMENT RESULTS\n";
+        content += "=====================================\n\n";
+        content += `10-Year Risk: ${riskPercent}%\n`;
+        content += `Risk Level: ${riskLevel}\n\n`;
+        
+        const rows = document.querySelectorAll('#resultsTable tbody tr');
+        content += "MODEL PREDICTIONS:\n";
+        rows.forEach(row => {
+            const cells = row.querySelectorAll('td');
+            content += `${cells[0].innerText}: ${cells[1].innerText} (${cells[2].innerText})\n`;
+        });
+        
+        const blob = new Blob([content], { type: 'text/plain' });
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'cardiovascular_risk_assessment.txt';
+        a.click();
+    }
+
+    function createRiskGauge(probability) {
+        const ctx = document.getElementById('riskGaugeChart').getContext('2d');
+        
+        if (gaugeChart) {
+            gaugeChart.destroy();
+        }
+
+        gaugeChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Risk', 'Safe'],
+                datasets: [{
+                    data: [probability, 100 - probability],
+                    backgroundColor: [
+                        probability > 0.5 ? '#dc3545' : (probability > 0.3 ? '#ff9800' : '#28a745'),
+                        '#e9ecef'
+                    ],
+                    borderColor: '#fff',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                cutout: '75%',
+                plugins: {
+                    legend: { display: false },
+                    tooltip: { enabled: false }
+                }
+            }
+        });
+    }
+
+    function createModelComparisonChart(predictions) {
+        const ctx = document.getElementById('modelComparisonChart').getContext('2d');
+        
+        if (modelChart) {
+            modelChart.destroy();
+        }
+
+        const models = predictions.map(p => p.model.replace(' ', '\n'));
+        const risks = predictions.map(p => p.probability);
+        
+        const colors = risks.map(r => 
+            r > 50 ? 'rgba(220, 53, 69, 0.8)' : (r > 30 ? 'rgba(255, 193, 7, 0.8)' : 'rgba(40, 167, 69, 0.8)')
+        );
+
+        modelChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: models,
+                datasets: [{
+                    label: '10-Year Risk (%)',
+                    data: risks,
+                    backgroundColor: colors,
+                    borderColor: colors.map(c => c.replace('0.8', '1')),
+                    borderWidth: 2,
+                    borderRadius: 5,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                indexAxis: 'x',
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        ticks: {
+                            callback: function(value) {
+                                return value + '%';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    function getNextSteps(riskPercent, riskLevel) {
+        let header = '';
+        let headerClass = '';
+        let steps = [];
+
+        if (riskLevel === 'Low') {
+            header = '✅ Keep Up the Good Work!';
+            headerClass = 'bg-success';
+            steps = [
+                {
+                    title: '1. Maintain Current Lifestyle',
+                    description: 'Continue with your healthy habits. Regular exercise, balanced diet, and stress management are key.'
+                },
+                {
+                    title: '2. Regular Health Checkups',
+                    description: 'Schedule annual check-ups with your healthcare provider to monitor your cardiovascular health.'
+                },
+                {
+                    title: '3. Monitor Key Metrics',
+                    description: 'Keep track of blood pressure, cholesterol levels, and weight to catch any changes early.'
+                },
+                {
+                    title: '4. Healthy Lifestyle Tips',
+                    description: `• Stay physically active (150 min moderate exercise/week)\n• Eat a heart-healthy diet rich in fruits and vegetables\n• Maintain a healthy weight\n• Don't smoke and avoid secondhand smoke`
+                }
+            ];
+        } else if (riskLevel === 'Moderate') {
+            header = '⚠️ Take Action Now';
+            headerClass = 'bg-warning';
+            steps = [
+                {
+                    title: '1. Schedule a Doctor\'s Appointment',
+                    description: 'Book an appointment with your primary care physician or cardiologist to discuss your results.'
+                },
+                {
+                    title: '2. Lifestyle Modifications',
+                    description: `• Increase physical activity to 150+ minutes per week\n• Adopt a Mediterranean or DASH diet\n• Reduce sodium intake\n• Manage stress through meditation or yoga`
+                },
+                {
+                    title: '3. Review Medications',
+                    description: 'Your doctor may recommend medications for blood pressure, cholesterol, or other risk factors.'
+                },
+                {
+                    title: '4. Quit Smoking',
+                    description: 'If you smoke, quitting is one of the most important steps to reduce your risk.'
+                },
+                {
+                    title: '5. Monitor & Follow-up',
+                    description: 'Plan to reassess your risk every 6-12 months and track your progress.'
+                }
+            ];
+        } else if (riskLevel === 'High') {
+            header = '🚨 Seek Medical Attention';
+            headerClass = 'bg-danger';
+            steps = [
+                {
+                    title: '1. Contact Your Doctor Immediately',
+                    description: 'Schedule an urgent appointment with your healthcare provider or cardiologist to discuss these results.'
+                },
+                {
+                    title: '2. Comprehensive Medical Evaluation',
+                    description: 'Your doctor may recommend additional tests such as EKG, echocardiogram, or stress tests.'
+                },
+                {
+                    title: '3. Medication Management',
+                    description: 'Your doctor will likely prescribe medications to manage blood pressure, cholesterol, and other risk factors.'
+                },
+                {
+                    title: '4. Aggressive Lifestyle Changes',
+                    description: `• Increase physical activity with medical supervision\n• Strict diet changes (consult with nutritionist)\n• Reduce stress significantly\n• Completely eliminate smoking and alcohol`
+                },
+                {
+                    title: '5. Consider Preventive Procedures',
+                    description: 'Your cardiologist may recommend coronary calcium scoring, carotid ultrasound, or other diagnostic procedures.'
+                },
+                {
+                    title: '6. Frequent Monitoring',
+                    description: 'Plan follow-up appointments every 3-6 months to assess progress and adjust treatment.'
+                }
+            ];
+        }
+
+        document.getElementById('nextStepsHeader').className = 'card-header text-white py-4 rounded-top ' + headerClass;
+        document.getElementById('nextStepsHeader').innerHTML = `<h5 class="mb-0"><i class="fas fa-clipboard-list"></i> ${header}</h5>`;
+
+        let content = '';
+        steps.forEach(step => {
+            content += `
+                <div class="next-step-item mb-4">
+                    <h6 class="fw-600 mb-2">${step.title}</h6>
+                    <p class="text-muted mb-0">${step.description.replace(/\n/g, '<br>')}</p>
+                </div>
+            `;
+        });
+
+        document.getElementById('nextStepsContent').innerHTML = content;
+    }
+
+    document.getElementById('predictionForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+
+        const formData = {
+            male: parseInt(document.getElementById('male').value) || 0,
+            age: parseFloat(document.getElementById('age').value) || 50,
+            education: parseInt(document.getElementById('education').value) || 1,
+            currentSmoker: parseInt(document.getElementById('currentSmoker').value) || 0,
+            cigsPerDay: parseFloat(document.getElementById('cigsPerDay').value) || 0,
+            BPMeds: parseInt(document.getElementById('BPMeds').value) || 0,
+            prevalentStroke: parseInt(document.getElementById('prevalentStroke').value) || 0,
+            prevalentHyp: parseInt(document.getElementById('prevalentHyp').value) || 0,
+            diabetes: parseInt(document.getElementById('diabetes').value) || 0,
+            totChol: parseFloat(document.getElementById('totChol').value) || 200,
+            sysBP: parseFloat(document.getElementById('sysBP').value) || 120,
+            diaBP: parseFloat(document.getElementById('diaBP').value) || 80,
+            BMI: parseFloat(document.getElementById('BMI').value) || 25,
+            heartRate: parseFloat(document.getElementById('heartRate').value) || 70,
+            glucose: parseFloat(document.getElementById('glucose').value) || 100,
+            HDL: parseFloat(document.getElementById('HDL').value) || 50
+        };
+
+        try {
+            const response = await fetch('/predict', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData)
+            });
+
+            const result = await response.json();
+
+            if (result.success) {
+                const primary = result.primary_prediction;
+                const riskPercent = Math.round(primary.probability);
+
+                // Update percentage
+                document.getElementById('riskPercentageValue').textContent = riskPercent;
+
+                // Create gauge chart
+                createRiskGauge(primary.probability);
+
+                // Create model comparison chart
+                createModelComparisonChart(result.all_predictions);
+
+                // Add next steps
+                getNextSteps(riskPercent, primary.risk_level);
+
+                // Update table
+                const tbody = document.querySelector('#resultsTable tbody');
+                tbody.innerHTML = '';
+                result.all_predictions.forEach(pred => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td><strong>${pred.model}</strong></td>
+                        <td><span class="badge bg-${pred.risk_color}" style="font-size: 1rem; padding: 0.5rem 1rem;">${pred.probability}%</span></td>
+                        <td><strong>${pred.risk_level}</strong></td>
+                        <td>${typeof pred.auc === 'number' ? (pred.auc * 100).toFixed(1) + '%' : pred.auc}</td>
+                    `;
+                    tbody.appendChild(row);
+                });
+
+                // Show results section
+                document.getElementById('resultsSection').style.display = 'block';
+                document.querySelector('.results-section').scrollIntoView({ behavior: 'smooth' });
+            }
+        } catch (error) {
+            alert('Error: ' + error.message);
+        }
+    });
+</script>
+{% endblock %}

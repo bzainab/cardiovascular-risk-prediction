@@ -1,0 +1,357 @@
+:root {
+    --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --success-color: #28a745;
+    --warning-color: #ff9800;
+    --danger-color: #dc3545;
+    --info-color: #17a2b8;
+}
+
+* {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e8ecf1 100%);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+}
+
+/* Form Section */
+.form-section {
+    padding: 60px 0 40px 0;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.form-header {
+    text-align: center;
+}
+
+.gradient-text {
+    background: linear-gradient(135deg, #fff 0%, #e9ecef 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.form-card {
+    border-radius: 15px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3) !important;
+}
+
+.form-section-label {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #667eea;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #667eea;
+    display: inline-block;
+}
+
+.form-label {
+    color: #333;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.form-control,
+.form-select {
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 12px 15px;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    outline: none;
+}
+
+.form-control-lg,
+.form-select-lg {
+    height: auto;
+    padding: 14px 18px;
+    font-size: 1.05rem;
+}
+
+.btn-calculate {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    color: white;
+    font-weight: 600;
+    padding: 15px 40px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+}
+
+.btn-calculate:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(102, 126, 234, 0.6);
+    color: white;
+}
+
+.btn-calculate:active {
+    transform: translateY(-1px);
+}
+
+/* Results Section */
+.results-section {
+    padding: 60px 0;
+    background: #f8f9fa;
+}
+
+.primary-risk-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 15px;
+    padding: 40px;
+    color: white;
+    margin-bottom: 30px;
+}
+
+.primary-risk-card .risk-content {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.risk-gauge-container {
+    flex-shrink: 0;
+    width: 200px;
+    height: 200px;
+}
+
+.risk-details {
+    flex: 1;
+}
+
+.risk-details h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.risk-percentage {
+    font-size: 4rem;
+    font-weight: 700;
+    margin: 15px 0;
+    color: #fff;
+}
+
+.risk-percentage span:last-child {
+    font-size: 2rem;
+    margin-left: 5px;
+}
+
+.risk-text {
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.95);
+    font-weight: 500;
+}
+
+/* Cards */
+.card {
+    border-radius: 12px;
+    border: none;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-header {
+    border-bottom: 3px solid rgba(255,255,255,0.2);
+    font-weight: 600;
+}
+
+.bg-gradient-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+}
+
+.bg-gradient-success {
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%) !important;
+}
+
+.bg-gradient-warning {
+    background: linear-gradient(135deg, #ff9800 0%, #ffc107 100%) !important;
+}
+
+.bg-gradient-danger {
+    background: linear-gradient(135deg, #dc3545 0%, #e74c3c 100%) !important;
+}
+
+.bg-gradient-info {
+    background: linear-gradient(135deg, #17a2b8 0%, #17a2b8 100%) !important;
+}
+
+.bg-gradient-secondary {
+    background: linear-gradient(135deg, #6c757d 0%, #495057 100%) !important;
+}
+
+/* Model Comparison */
+.model-comparison {
+    background: white;
+}
+
+/* Next Steps */
+.next-step-item {
+    padding: 20px;
+    background: #f8f9fa;
+    border-left: 4px solid #667eea;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.next-step-item:hover {
+    background: #e8ecf1;
+    transform: translateX(5px);
+}
+
+.next-step-item h6 {
+    color: #667eea;
+    margin-bottom: 8px;
+}
+
+/* Table */
+.table {
+    border-collapse: collapse;
+}
+
+.table thead th {
+    background: #f8f9fa;
+    color: #333;
+    font-weight: 600;
+    border-bottom: 2px solid #dee2e6;
+    padding: 15px;
+}
+
+.table tbody tr {
+    transition: all 0.3s ease;
+}
+
+.table tbody tr:hover {
+    background-color: #f8f9fa;
+    transform: scale(1.01);
+}
+
+.table tbody td {
+    padding: 15px;
+    vertical-align: middle;
+}
+
+/* Badge Styling */
+.badge {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+/* Alert */
+.alert {
+    border-radius: 10px;
+    border: 2px solid;
+}
+
+.alert-warning {
+    background: #fff8e1;
+    border-color: #ff9800;
+    color: #555;
+}
+
+.alert-warning .alert-heading {
+    color: #ff9800;
+    font-weight: 600;
+}
+
+/* Buttons */
+.btn {
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-primary {
+    color: #667eea;
+    border: 2px solid #667eea;
+}
+
+.btn-outline-primary:hover {
+    background: #667eea;
+    border-color: #667eea;
+    color: white;
+    transform: translateY(-3px);
+}
+
+.btn-outline-success {
+    color: #28a745;
+    border: 2px solid #28a745;
+}
+
+.btn-outline-success:hover {
+    background: #28a745;
+    border-color: #28a745;
+    color: white;
+    transform: translateY(-3px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .gradient-text {
+        font-size: 2rem;
+    }
+
+    .primary-risk-card .risk-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .risk-gauge-container {
+        width: 150px;
+        height: 150px;
+    }
+
+    .risk-percentage {
+        font-size: 3rem;
+    }
+
+    .form-section {
+        padding: 40px 0 30px 0;
+    }
+}
+
+/* Utility Classes */
+.fw-600 {
+    font-weight: 600;
+}
+
+.rounded-top {
+    border-radius: 12px 12px 0 0 !important;
+}
+
+/* Hover Effects */
+.next-step-item,
+.card {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.next-step-item:hover,
+.card:hover {
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+}
