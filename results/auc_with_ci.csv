@@ -1,0 +1,8 @@
+Model,AUC,AUC_CI_lo,AUC_CI_hi,Brier
+Logistic_Regression,0.6975,0.6498,0.7418,0.211
+ANN,0.6797,0.6269,0.726,0.1234
+Clinically_Informed_Stacking_Ensemble,0.6787,0.6297,0.7254,0.2138
+SVM,0.6533,0.6046,0.6994,0.1255
+Random_Forest,0.6507,0.5996,0.7037,0.1332
+Gradient_Boosting,0.6444,0.594,0.696,0.1316
+XGBoost,0.6374,0.5856,0.6851,0.174

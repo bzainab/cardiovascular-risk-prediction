@@ -1,0 +1,128 @@
+{
+  "n_bootstrap": 1000,
+  "models": [
+    {
+      "Model": "Logistic_Regression",
+      "AUC": 0.6975,
+      "AUC_CI_lo": 0.6498,
+      "AUC_CI_hi": 0.7418,
+      "Brier": 0.211
+    },
+    {
+      "Model": "Random_Forest",
+      "AUC": 0.6507,
+      "AUC_CI_lo": 0.5996,
+      "AUC_CI_hi": 0.7037,
+      "Brier": 0.1332
+    },
+    {
+      "Model": "Gradient_Boosting",
+      "AUC": 0.6444,
+      "AUC_CI_lo": 0.594,
+      "AUC_CI_hi": 0.696,
+      "Brier": 0.1316
+    },
+    {
+      "Model": "XGBoost",
+      "AUC": 0.6374,
+      "AUC_CI_lo": 0.5856,
+      "AUC_CI_hi": 0.6851,
+      "Brier": 0.174
+    },
+    {
+      "Model": "SVM",
+      "AUC": 0.6533,
+      "AUC_CI_lo": 0.6046,
+      "AUC_CI_hi": 0.6994,
+      "Brier": 0.1255
+    },
+    {
+      "Model": "ANN",
+      "AUC": 0.6797,
+      "AUC_CI_lo": 0.6269,
+      "AUC_CI_hi": 0.726,
+      "Brier": 0.1234
+    },
+    {
+      "Model": "Clinically_Informed_Stacking_Ensemble",
+      "AUC": 0.6787,
+      "AUC_CI_lo": 0.6297,
+      "AUC_CI_hi": 0.7254,
+      "Brier": 0.2138
+    }
+  ],
+  "pairwise": [
+    {
+      "ModelA": "Logistic_Regression",
+      "ModelB": "Random_Forest",
+      "AUC_diff": 0.0468,
+      "p_value": 0.0
+    },
+    {
+      "ModelA": "Logistic_Regression",
+      "ModelB": "Gradient_Boosting",
+      "AUC_diff": 0.053,
+      "p_value": 0.0
+    },
+    {
+      "ModelA": "Logistic_Regression",
+      "ModelB": "XGBoost",
+      "AUC_diff": 0.0601,
+      "p_value": 0.0
+    },
+    {
+      "ModelA": "Logistic_Regression",
+      "ModelB": "SVM",
+      "AUC_diff": 0.0442,
+      "p_value": 0.004
+    },
+    {
+      "ModelA": "Logistic_Regression",
+      "ModelB": "ANN",
+      "AUC_diff": 0.0177,
+      "p_value": 0.19
+    },
+    {
+      "ModelA": "Logistic_Regression",
+      "ModelB": "Clinically_Informed_Stacking_Ensemble",
+      "AUC_diff": 0.0188,
+      "p_value": 0.03
+    },
+    {
+      "ModelA": "Clinically_Informed_Stacking_Ensemble",
+      "ModelB": "Logistic_Regression",
+      "AUC_diff": -0.0188,
+      "p_value": 0.026
+    },
+    {
+      "ModelA": "Clinically_Informed_Stacking_Ensemble",
+      "ModelB": "Random_Forest",
+      "AUC_diff": 0.028,
+      "p_value": 0.006
+    },
+    {
+      "ModelA": "Clinically_Informed_Stacking_Ensemble",
+      "ModelB": "Gradient_Boosting",
+      "AUC_diff": 0.0342,
+      "p_value": 0.002
+    },
+    {
+      "ModelA": "Clinically_Informed_Stacking_Ensemble",
+      "ModelB": "XGBoost",
+      "AUC_diff": 0.0413,
+      "p_value": 0.0
+    },
+    {
+      "ModelA": "Clinically_Informed_Stacking_Ensemble",
+      "ModelB": "SVM",
+      "AUC_diff": 0.0254,
+      "p_value": 0.058
+    },
+    {
+      "ModelA": "Clinically_Informed_Stacking_Ensemble",
+      "ModelB": "ANN",
+      "AUC_diff": -0.0011,
+      "p_value": 0.982
+    }
+  ]
+}
