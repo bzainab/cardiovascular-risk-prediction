@@ -15,3 +15,11 @@ Makefile text eol=lf
 *.gif binary
 *.pkl binary
 *.ipynb text eol=lf
+
+# Report this repo as Python on GitHub rather than Jupyter Notebook.
+# The notebook is exploratory; the real work is the src/ package.
+notebooks/** linguist-documentation
+*.ipynb linguist-detectable=false
+Framingham_Data/** linguist-vendored
+results/** linguist-generated
+models/** linguist-generated
